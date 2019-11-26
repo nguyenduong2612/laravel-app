@@ -82,7 +82,7 @@
                             <a href="">Courses</a>
                             </li>
                             <li class="list-group-item">
-                            <a href="">Subjects</a>
+                            <a href="{{ route('subjects.index') }}">Subjects</a>
                             </li>
                         </ul>
                         </div>
