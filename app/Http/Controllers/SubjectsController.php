@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Subject;
 use Illuminate\Http\Request;
+use App\Http\Requests\Subjects\CreateSubjectRequest;
+use App\Http\Requests\Subjects\UpdateSubjectsRequest;
 
 class SubjectsController extends Controller
 {
@@ -13,7 +16,7 @@ class SubjectsController extends Controller
      */
     public function index()
     {
-        return view('subjects.index');
+        return view('subjects.index')->with('subjects', Subject::all());
     }
 
     /**
@@ -32,9 +35,15 @@ class SubjectsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateSubjectRequest $request)
     {
-        //
+
+        Subject::create([
+            'name' => $request->name
+        ]);
+
+        session()->flash('success', 'Subject created successfully.');
+        return redirect(route('subjects.index'));
     }
 
     /**
@@ -54,9 +63,9 @@ class SubjectsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Subject $subject)
     {
-        //
+        return view('subjects.create')->with('subject', $subject);
     }
 
     /**
@@ -66,9 +75,13 @@ class SubjectsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateSubjectsRequest $request, Subject $subject)
     {
-        //
+        $subject->update([
+            'name' => $request->name
+        ]);
+        session()->flash('success', 'Subject updated successfully.');
+        return redirect(route('subjects.index'));
     }
 
     /**
@@ -77,8 +90,10 @@ class SubjectsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Subject $subject)
     {
-        //
+        $subject->delete();
+        session()->flash('success', 'Subject deleted successfully.');
+        return redirect(route('subjects.index'));
     }
 }
