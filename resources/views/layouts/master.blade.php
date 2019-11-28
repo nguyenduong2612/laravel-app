@@ -56,7 +56,7 @@
     <div id="app">
         <header>
             <div class="header-area ">
-                <div id="sticky-header" class="main-header-area sticky">
+                <div id="sticky-header" class="main-header-area">
                     <div class="container-fluid p-0">
                         <div class="row align-items-center no-gutters">
                             <div class="col-xl-2 col-lg-2">
@@ -73,14 +73,9 @@
                                             <li><a href="{{ url('/') }}">Home</a></li>
                                             <li><a href="{{ route('courses.index') }}">Courses</a></li>
                                             <li><a href="{{ route('subjects.index') }}">Categories</a></li>
-                                            <li><a href="about.html">About</a></li>
-                                            <li><a href="#">blog</a>
-                                                <ul class="submenu">
-                                                    <li><a href="blog.html">blog</a></li>
-                                                    <li><a href="single-blog.html">single-blog</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="contact.html">Contact</a></li>
+                                            <li><a href="{{ url('/community') }}">Community</a></li>
+                                            <li><a href="{{ url('/about') }}">About</a></li>
+                                            <li><a href="{{ url('/contact') }}">Contact</a></li>
                                         </ul>
                                     </nav>
                                 </div>

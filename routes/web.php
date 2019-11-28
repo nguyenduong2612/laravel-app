@@ -14,7 +14,13 @@ use App\Subject;
 */
 
 Route::get('/', function () {
-    return view('welcome')->with('subjects', Subject::all());
+    return view('welcome');
+});
+Route::get('/about', function () {
+    return view('about');
+});
+Route::get('/contact', function () {
+    return view('contact');
 });
 
 Auth::routes();
