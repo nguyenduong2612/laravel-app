@@ -1,5 +1,7 @@
 <?php
 
+use App\Subject;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,7 +14,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome')->with('subjects', Subject::all());
 });
 
 Auth::routes();

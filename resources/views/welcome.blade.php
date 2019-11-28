@@ -12,6 +12,9 @@
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
     <!-- Place favicon.ico in the root directory -->
 
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+
     <!-- CSS here -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/owl.carousel.min.css">
@@ -49,12 +52,13 @@
                             <div class="main-menu  d-none d-lg-block">
                                 <nav>
                                     <ul id="navigation">
-                                        <li><a class="active" href="index.html">home</a></li>
-                                        <li><a href="Courses.html">Courses</a></li>
-                                        <li><a href="#">pages <i class="ti-angle-down"></i></a>
+                                        <li><a class="active" href="#">Home</a></li>
+                                        <li><a href="{{ route('courses.index') }}">Courses</a></li>
+                                        <li><a href="#">Subjects <i class="ti-angle-down"></i></a>
                                             <ul class="submenu">
-                                                <li><a href="course_details.html">course details</a></li>
-                                                <li><a href="elements.html">elements</a></li>
+                                            @foreach($subjects as $subject)
+                                                <li><a href="{{ route('subjects.show', $subject->id) }}">{{ $subject->name }}</a></li>
+                                            @endforeach
                                             </ul>
                                         </li>
                                         <li><a href="about.html">About</a></li>
@@ -70,18 +74,29 @@
                             </div>
                         </div>
                         <div class="col-xl-3 col-lg-3 d-none d-lg-block">
-                            <div class="log_chat_area d-flex align-items-center">
-                                <a href="#test-form" class="login popup-with-form">
-                                    <i class="flaticon-user"></i>
-                                    <span>log in</span>
-                                </a>
-                                <div class="live_chat_btn">
-                                    <a class="boxed_btn_orange" href="#">
-                                        <i class="fa fa-phone"></i>
-                                        <span>+10 378 467 3672</span>
-                                    </a>
+
+                            @if (Route::has('login'))
+                                <div class="log_chat_area d-flex align-items-center">
+                                    @auth
+                                        <a href="{{ url('/home') }}" class="login popup-with-form">
+                                            <span>Hello, {{ Auth::user()->name }} </span>
+                                        </a>
+                                    @else
+                                        <a href="{{ route('login') }}" class="login popup-with-form">
+                                            <i class="flaticon-user"></i>
+                                            <span>Log in</span>
+                                        </a>
+                                        @if (Route::has('register'))
+                                            <div class="live_chat_btn">
+                                                <a class="boxed_btn_orange" href="{{ route('register') }}">
+                                                    <span>Register</span>
+                                                </a>
+                                            </div>
+                                        @endif
+                                    @endauth
                                 </div>
-                            </div>
+                            @endif
+
                         </div>
                         <div class="col-12">
                             <div class="mobile_menu d-block d-lg-none"></div>
@@ -2094,13 +2109,13 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <script src="js/gijgo.min.js"></script>
 
     <!--contact js-->
-    <script src="js/contact.js"></script>
+    <!-- <script src="js/contact.js"></script>
     <script src="js/jquery.ajaxchimp.min.js"></script>
     <script src="js/jquery.form.js"></script>
     <script src="js/jquery.validate.min.js"></script>
     <script src="js/mail-script.js"></script>
 
-    <script src="js/main.js"></script>
+    <script src="js/main.js"></script> -->
 </body>
 
 </html>
