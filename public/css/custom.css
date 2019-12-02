@@ -16,4 +16,5 @@
 .login-form .login-btn {
     border-radius: 50px;
     width: 100%;
+    box-shadow: 0 15px 28px -5px rgba(29,130,255,.45);
 }
