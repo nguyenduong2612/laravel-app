@@ -99,4 +99,12 @@ class UsersController extends Controller
         session()->flash('success', 'User made admin successfully.');
         return redirect(route('users.index'));
     }
+
+    public function makeTeacher(User $user)
+    {
+        $user->role = 'teacher';
+        $user->save();
+        session()->flash('success', 'User made teacher successfully.');
+        return redirect(route('users.index'));
+    }
 }

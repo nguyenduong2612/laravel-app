@@ -2,7 +2,11 @@
 
 @section('content')
 <div class="d-flex justify-content-end mb-2">
-    <a href="{{ route('subjects.create') }}" class="btn btn-success">Add Subject</a>
+    @auth
+        @if(auth()->user()->isAdmin())  
+            <a href="{{ route('subjects.create') }}" class="btn btn-success">Add Subject</a>
+        @endif
+    @endauth
 </div>
 
 <div class="card card-default">
