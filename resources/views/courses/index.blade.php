@@ -47,7 +47,12 @@
                         <td>
                         <button class="btn btn-danger btn-sm" onclick="handleDelete({{ $course->id }})">Delete</button>
                         </td>
+                    @else
+                        <td>
+                            <a href="{{ route('courses.show', $course->id) }}" class="btn btn-success btn-sm">Enroll</a>
+                        </td>
                     @endif
+
                 @endauth
             </tr>
             @endforeach

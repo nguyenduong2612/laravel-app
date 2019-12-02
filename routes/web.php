@@ -26,6 +26,9 @@ Route::get('/contact', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/all-subjects', 'SubjectsController@showAll')->name('all-subjects');
+Route::get('/all-courses', 'CoursesController@showAll')->name('all-courses');
+
 Route::resources([
     'subjects' => 'SubjectsController',
     'courses' => 'CoursesController',
@@ -34,8 +37,8 @@ Route::resources([
 
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('users', 'UsersController@index')->name('users.index');
-    Route::get('users/profile', 'UsersController@edit')->name('users.edit-profile');
-    Route::put('users/profile', 'UsersController@update')->name('users.update-profile');
+    // Route::get('users/profile', 'UsersController@edit')->name('users.edit-profile');
+    // Route::put('users/profile', 'UsersController@update')->name('users.update-profile');
     Route::post('users/{user}/make-admin', 'UsersController@makeAdmin')->name('users.make-admin');
     Route::post('users/{user}/make-teacher', 'UsersController@makeTeacher')->name('users.make-teacher');
     Route::get('subjects/create', 'SubjectsController@create')->name('subjects.create');

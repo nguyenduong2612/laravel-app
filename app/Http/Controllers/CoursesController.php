@@ -61,9 +61,9 @@ class CoursesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Course $course)
     {
-        //
+        return view('courses.show');
     }
 
     /**
@@ -123,5 +123,10 @@ class CoursesController extends Controller
         $course->delete();
         session()->flash('success', 'Course deleted successfully.');
         return redirect(route('courses.index'));
+    }
+
+    public function showAll()
+    {
+        return view('courses.showAll')->with('courses', Course::all());
     }
 }

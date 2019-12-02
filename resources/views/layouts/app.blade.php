@@ -53,8 +53,8 @@
                                 <nav>
                                     <ul id="navigation">
                                         <li><a href="{{ url('/') }}">Home</a></li>
-                                        <li><a href="{{ route('courses.index') }}">Courses</a></li>
-                                        <li><a href="{{ route('subjects.index') }}">Categories</a></li>
+                                        <li><a href="{{ url('/all-courses') }}">Courses</a></li>
+                                        <li><a href="{{ url('/all-subjects') }}">Categories</a></li>
                                         <li><a href="{{ url('/community') }}">Community</a></li>
                                         <li><a href="{{ url('/about') }}">About</a></li>
                                         <li><a href="{{ url('/contact') }}">Contact</a></li>
@@ -79,7 +79,7 @@
                                                 <a class="dropdown-item" href="{{ url('/home') }}" class="login popup-with-form">
                                                     <span>My Page</span>
                                                 </a>
-                                                <a class="dropdown-item" href="{{ route('users.edit-profile') }}" class="login popup-with-form">
+                                                <a class="dropdown-item" href="{{  route('users.edit',  Auth::user()->id)  }}" class="login popup-with-form">
                                                     <span>My Profile</span>
                                                 </a>
                                                 @if(auth()->user()->isAdmin())  

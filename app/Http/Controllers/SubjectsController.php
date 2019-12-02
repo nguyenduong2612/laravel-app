@@ -100,4 +100,9 @@ class SubjectsController extends Controller
         session()->flash('success', 'Subject deleted successfully.');
         return redirect(route('subjects.index'));
     }
+
+    public function showAll()
+    {
+        return view('subjects.showAll')->with('subjects', Subject::all());
+    }
 }
