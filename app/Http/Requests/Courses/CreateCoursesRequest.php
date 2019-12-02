@@ -25,7 +25,8 @@ class CreateCoursesRequest extends FormRequest
             'title' => 'required|unique:courses',
             'description' => 'required',
             'image' => 'required|image',
-            'video' => 'required'
+            'video' => 'required',
+            'subject' => 'required'
         ];
     }
 }

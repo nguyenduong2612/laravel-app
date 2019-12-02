@@ -11,6 +11,7 @@
         <table class="table">
             <thead>
                 <th>Name</th>
+                <th>Courses Count</th>
                 <th></th>
             </thead>
 
@@ -19,6 +20,9 @@
                 <tr>
                     <td>
                         {{ $subject->name }}
+                    </td>
+                    <td>
+                        {{ $subject->courses->count() }}
                     </td>
                     <td>
                         <a href="{{ route('subjects.edit', $subject->id) }}" class="btn btn-info btn-sm">

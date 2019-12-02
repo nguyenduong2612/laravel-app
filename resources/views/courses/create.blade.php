@@ -47,6 +47,23 @@
             </div>
 
             <div class="form-group">
+                <label for="subject">Subject</label>
+                <select name="subject" id="subject" class="form-control">
+                @foreach($subjects as $subject)
+                    <option value="{{ $subject->id }}"
+                        @if(isset($course))
+                            @if($subject->id === $course->subject_id)
+                                selected
+                            @endif
+                        @endif
+                    >
+                    {{ $subject->name }}
+                    </option>
+                @endforeach
+                </select>
+            </div>
+
+            <div class="form-group">
                 <button type="submit" class="btn btn-success">
                 {{ isset($course) ? 'Update Course': 'Create Course' }}
                 </button>

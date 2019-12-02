@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Course;
+use App\Subject;
 use Illuminate\Http\Request;
 use App\Http\Requests\Courses\CreateCoursesRequest;
 use App\Http\Requests\Courses\UpdateCoursesRequest;
-use Illuminate\Support\Facades\Storage;
+// use Illuminate\Support\Facades\Storage;
 
 class CoursesController extends Controller
 {
@@ -27,7 +28,7 @@ class CoursesController extends Controller
      */
     public function create()
     {
-        return view('courses.create');
+        return view('courses.create')->with('subjects', Subject::all());
     }
 
     /**
@@ -45,7 +46,8 @@ class CoursesController extends Controller
             'title' => $request->title,
             'description' => $request->description,
             'image' => $image,
-            'video' => $video
+            'video' => $video,
+            'subject_id' => $request->subject
         ]);
         // flash message
         session()->flash('success', 'Courses created successfully.');
@@ -72,7 +74,7 @@ class CoursesController extends Controller
      */
     public function edit(Course $course)
     {
-        return view('courses.create')->with('course', $course);
+        return view('courses.create')->with('course', $course)->with('subjects', Subject::all());
     }
 
     /**
@@ -84,7 +86,7 @@ class CoursesController extends Controller
      */
     public function update(UpdateCoursesRequest $request, Course $course)
     {
-        $data = $request->only(['title', 'description', 'published_at']);
+        $data = $request->only(['title', 'description', 'published_at', 'subject_id']);
         // check if new image
         if ($request->hasFile('image')) {
             // delete old one

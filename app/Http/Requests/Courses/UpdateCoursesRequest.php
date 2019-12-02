@@ -27,7 +27,8 @@ class UpdateCoursesRequest extends FormRequest
     {
         return [
             'title' => 'required',
-            'description' => 'required'
+            'description' => 'required',
+            'subject' => 'required'
         ];
     }
 }

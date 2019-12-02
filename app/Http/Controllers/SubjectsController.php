@@ -92,6 +92,10 @@ class SubjectsController extends Controller
      */
     public function destroy(Subject $subject)
     {
+        if ($subject->courses->count() > 0) {
+            session()->flash('success', 'Subject cannot be deleted because it has some courses.');
+            return redirect(route('subjects.index'));
+        }
         $subject->delete();
         session()->flash('success', 'Subject deleted successfully.');
         return redirect(route('subjects.index'));

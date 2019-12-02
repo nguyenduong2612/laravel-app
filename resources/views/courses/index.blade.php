@@ -14,6 +14,7 @@
             <th>Image</th>
             <th>Title</th>
             <th>Video</th>
+            <th>Subject</th>
             <th></th>
             <th></th>
         </thead>
@@ -28,6 +29,11 @@
                 </td>
                 <td>
                     <img src="{{ asset('storage/'.$course->video) }}" width="200px" alt="">
+                </td>
+                <td>
+                    <a href="{{ route('subjects.edit', $course->subject->id) }}">
+                        {{ $course->subject->name }}
+                    </a>
                 </td>
                 <td>
                     <a href="{{ route('courses.edit', $course->id) }}" class="btn btn-info btn-sm">Edit</a>
