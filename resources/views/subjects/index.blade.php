@@ -28,12 +28,16 @@
                     <td>
                         {{ $subject->courses->count() }}
                     </td>
-                    <td>
-                        <a href="{{ route('subjects.edit', $subject->id) }}" class="btn btn-info btn-sm">
-                            Edit
-                        </a>
-                        <button class="btn btn-danger btn-sm" onclick="handleDelete({{ $subject->id }})">Delete</button>
-                    </td>
+                    @auth
+                        @if(auth()->user()->isAdmin())  
+                            <td>
+                                <a href="{{ route('subjects.edit', $subject->id) }}" class="btn btn-info btn-sm">
+                                    Edit
+                                </a>
+                                <button class="btn btn-danger btn-sm" onclick="handleDelete({{ $subject->id }})">Delete</button>
+                            </td>
+                        @endif
+                    @endauth
                 </tr>
                 @endforeach
             </tbody>

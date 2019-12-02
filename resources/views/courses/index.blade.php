@@ -39,12 +39,16 @@
                         {{ $course->subject->name }}
                     </a>
                 </td>
-                <td>
-                    <a href="{{ route('courses.edit', $course->id) }}" class="btn btn-info btn-sm">Edit</a>
-                </td>
-                <td>
-                <button class="btn btn-danger btn-sm" onclick="handleDelete({{ $course->id }})">Delete</button>
-                </td>
+                @auth
+                    @if(auth()->user()->isAdmin())  
+                        <td>
+                            <a href="{{ route('courses.edit', $course->id) }}" class="btn btn-info btn-sm">Edit</a>
+                        </td>
+                        <td>
+                        <button class="btn btn-danger btn-sm" onclick="handleDelete({{ $course->id }})">Delete</button>
+                        </td>
+                    @endif
+                @endauth
             </tr>
             @endforeach
         </tbody>
