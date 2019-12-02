@@ -79,6 +79,14 @@
                                                 <a class="dropdown-item" href="{{ url('/home') }}" class="login popup-with-form">
                                                     <span>My Page</span>
                                                 </a>
+                                                <a class="dropdown-item" href="{{ route('users.edit-profile') }}" class="login popup-with-form">
+                                                    <span>My Profile</span>
+                                                </a>
+                                                @if(auth()->user()->isAdmin())  
+                                                <a class="dropdown-item" href="{{ route('users.index') }}">
+                                                    <span>Users</span>
+                                                </a>
+                                                @endif
                                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                                 onclick="event.preventDefault();
                                                                 document.getElementById('logout-form').submit();">
