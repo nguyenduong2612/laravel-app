@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Course;
 use Illuminate\Http\Request;
 use App\Http\Requests\Courses\CreateCoursesRequest;
+use App\Http\Requests\Courses\UpdateCoursesRequest;
+use Illuminate\Support\Facades\Storage;
 
 class CoursesController extends Controller
 {
@@ -36,14 +38,14 @@ class CoursesController extends Controller
      */
     public function store(CreateCoursesRequest $request)
     {
-        $image = $request->image->store('courses');
-        $video = $request->video->store('courses');
+        $image = $request->image->store('courses','public');
+        $video = $request->video->store('courses','public');
         // create new course
         Course::create([
-          'title' => $request->title,
-          'description' => $request->description,
-          'image' => $image,
-          'video' => $video
+            'title' => $request->title,
+            'description' => $request->description,
+            'image' => $image,
+            'video' => $video
         ]);
         // flash message
         session()->flash('success', 'Courses created successfully.');
@@ -68,9 +70,9 @@ class CoursesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Course $course)
     {
-        //
+        return view('courses.create')->with('course', $course);
     }
 
     /**
@@ -80,9 +82,30 @@ class CoursesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateCoursesRequest $request, Course $course)
     {
-        //
+        $data = $request->only(['title', 'description', 'published_at']);
+        // check if new image
+        if ($request->hasFile('image')) {
+            // delete old one
+            unlink('storage/' . $course->image);
+            // upload it
+            $image = $request->image->store('courses', 'public');
+            $data['image'] = $image;
+        }
+        if ($request->hasFile('video')) {
+            // delete old one
+            unlink('storage/' . $course->video);
+            // upload it
+            $image = $request->video->store('courses', 'public');
+            $data['video'] = $video;
+        }
+        // update attributes
+        $course->update($data);
+        // flash message
+        session()->flash('success', 'Course updated successfully.');
+        // redirect user
+        return redirect(route('courses.index'));
     }
 
     /**
@@ -91,8 +114,12 @@ class CoursesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Course $course)
     {
-        //
+        unlink('storage/' . $course->image);
+        unlink('storage/' . $course->video);
+        $course->delete();
+        session()->flash('success', 'Course deleted successfully.');
+        return redirect(route('courses.index'));
     }
 }

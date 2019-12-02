@@ -21,24 +21,61 @@
             @foreach($courses as $course)
             <tr>
                 <td>
-                    <img src="{{ asset($course->image) }}" width="120px" height="60px" alt="">
+                    <img src="{{ asset('storage/'.$course->image) }}" width="120px" alt="">
                 </td>
                 <td>
                     {{ $course->title }}
                 </td>
                 <td>
-                    <img src="{{ asset($course->video) }}" width="200px" alt="">
+                    <img src="{{ asset('storage/'.$course->video) }}" width="200px" alt="">
                 </td>
                 <td>
-                    <a href="" class="btn btn-info btn-sm">Edit</a>
+                    <a href="{{ route('courses.edit', $course->id) }}" class="btn btn-info btn-sm">Edit</a>
                 </td>
                 <td>
-                    <a href="" class="btn btn-danger btn-sm">Trash</a>
+                <button class="btn btn-danger btn-sm" onclick="handleDelete({{ $course->id }})">Delete</button>
                 </td>
             </tr>
             @endforeach
         </tbody>
     </table>
+
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <form action="" method="POST" id="deleteCourseForm">
+                @csrf
+                @method('DELETE')
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteModalLabel">Delete Course</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p class="text-center text-bold">
+                    Are you sure you want to delete this course ?
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No, Go back</button>
+                    <button type="submit" class="btn btn-danger">Yes, Delete</button>
+                </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
     </div>
 </div>
+@endsection
+
+@section('scripts')
+    <script>
+        function handleDelete(id) {
+            var form = document.getElementById('deleteCourseForm')
+            form.action = '/courses/' + id
+            $('#deleteModal').modal('show')
+        }
+    </script>
 @endsection
