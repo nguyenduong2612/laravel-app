@@ -4,3 +4,16 @@
     font-family: "Nunito", sans-serif;
     text-decoration: none!important;
 }
+
+.login-form {
+    width: 65%;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 1px 11px 68px -20px rgba(0,0,0,.75);
+}
+
+.login-form .login-btn {
+    border-radius: 50px;
+    width: 100%;
+}
