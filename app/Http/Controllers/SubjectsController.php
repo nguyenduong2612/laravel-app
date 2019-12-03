@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Course;
 use App\Subject;
 use Illuminate\Http\Request;
 use App\Http\Requests\Subjects\CreateSubjectRequest;
@@ -26,7 +27,11 @@ class SubjectsController extends Controller
      */
     public function create()
     {
-        return view('subjects.create');
+        if (!auth()->user()->isAdmin()) {
+            return redirect(route('home'));
+            
+        }
+            return view('subjects.create');
     }
 
     /**
@@ -52,9 +57,9 @@ class SubjectsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Subject $subject)
     {
-        //
+        return view('subjects.show')->with('subject', $subject)->with('courses', Course::all());
     }
 
     /**
@@ -65,6 +70,9 @@ class SubjectsController extends Controller
      */
     public function edit(Subject $subject)
     {
+        if (!auth()->user()->isAdmin()) {
+            return redirect(route('home'));
+        }
         return view('subjects.create')->with('subject', $subject);
     }
 

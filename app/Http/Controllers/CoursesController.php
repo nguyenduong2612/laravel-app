@@ -28,6 +28,9 @@ class CoursesController extends Controller
      */
     public function create()
     {
+        if (auth()->user()->isStudent()) {
+            return redirect(route('home'));
+        }
         return view('courses.create')->with('subjects', Subject::all());
     }
 
@@ -63,7 +66,7 @@ class CoursesController extends Controller
      */
     public function show(Course $course)
     {
-        return view('courses.show');
+        return view('courses.show')->with('course', $course);
     }
 
     /**
@@ -74,6 +77,9 @@ class CoursesController extends Controller
      */
     public function edit(Course $course)
     {
+        if (auth()->user()->isStudent()) {
+            return redirect(route('home'));
+        }
         return view('courses.create')->with('course', $course)->with('subjects', Subject::all());
     }
 

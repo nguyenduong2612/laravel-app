@@ -124,7 +124,7 @@
         </div>
     </header>
 
-        <main class="py-4" style="margin-top: 100px;">
+        <main class="py-4" style="margin-top: 100px; min-height: 100vh;">
             @auth
                 <div class="container">
                     @if(session()->has('success'))

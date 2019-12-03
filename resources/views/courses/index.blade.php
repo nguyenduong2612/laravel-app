@@ -3,7 +3,7 @@
 @section('content')
 <div class="d-flex justify-content-end mb-2">
     @auth
-        @if(auth()->user()->isAdmin())  
+        @if(!auth()->user()->isStudent())  
             <a href="{{ route('courses.create') }}" class="btn btn-success">Add Course</a>
         @endif
     @endauth
@@ -40,7 +40,7 @@
                     </a>
                 </td>
                 @auth
-                    @if(auth()->user()->isAdmin())  
+                    @if(!auth()->user()->isStudent())  
                         <td>
                             <a href="{{ route('courses.edit', $course->id) }}" class="btn btn-info btn-sm">Edit</a>
                         </td>

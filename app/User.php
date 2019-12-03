@@ -46,4 +46,9 @@ class User extends Authenticatable
     {
         return $this->role === 'teacher';
     }
+
+    public function isStudent()
+    {
+        return $this->role === 'student';
+    }
 }
