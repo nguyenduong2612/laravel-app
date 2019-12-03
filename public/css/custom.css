@@ -18,3 +18,27 @@
     width: 100%;
     box-shadow: 0 15px 28px -5px rgba(29,130,255,.45);
 }
+
+.cover {
+    width: 100vw;
+    height: 100px;
+    background-color: #fff;
+    transform: rotate(3deg);
+    position: absolute!important;
+    left: -122px;
+    top: -77px;
+    z-index: 0;
+}
+
+.course-info {
+    width: 18rem; 
+    position: absolute!important;
+    top: -7rem;
+    right: 0;
+    z-index: 3;
+}
+
+.start-btn {
+    padding: 15px 100px!important;
+    font-weight: bolder;
+}
