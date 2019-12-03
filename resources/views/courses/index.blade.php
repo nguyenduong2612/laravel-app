@@ -17,12 +17,15 @@
         <thead>
             <th>Image</th>
             <th>Title</th>
-            <th>Video</th>
             <th>Subject</th>
+            <th>Created By</th>
+            <th></th>
             <th></th>
             <th></th>
         </thead>
         <tbody>
+        <!-- show all courses for admin -->
+        @if(auth()->user()->isAdmin())
             @foreach($courses as $course)
             <tr>
                 <td>
@@ -32,30 +35,58 @@
                     {{ $course->title }}
                 </td>
                 <td>
-                    <img src="{{ asset('storage/'.$course->video) }}" width="200px" alt="">
-                </td>
-                <td>
                     <a href="{{ route('subjects.edit', $course->subject->id) }}">
                         {{ $course->subject->name }}
                     </a>
                 </td>
-                @auth
-                    @if(!auth()->user()->isStudent())  
-                        <td>
-                            <a href="{{ route('courses.edit', $course->id) }}" class="btn btn-info btn-sm">Edit</a>
-                        </td>
-                        <td>
-                        <button class="btn btn-danger btn-sm" onclick="handleDelete({{ $course->id }})">Delete</button>
-                        </td>
-                    @else
-                        <td>
-                            <a href="{{ route('courses.show', $course->id) }}" class="btn btn-success btn-sm">Enroll</a>
-                        </td>
-                    @endif
-
-                @endauth
+                <td>
+                    {{ \App\User::where(['id' => $course->teacher_id])->first()->name }}
+                </td>
+                <td>
+                    <a href="{{ route('courses.show', $course->id) }}" class="btn btn-success btn-sm">Enter</a>
+                </td>
+                <td>
+                    <a href="{{ route('courses.edit', $course->id) }}" class="btn btn-info btn-sm">Edit</a>
+                </td>
+                <td>
+                <button class="btn btn-danger btn-sm" onclick="handleDelete({{ $course->id }})">Delete</button>
+                </td>
             </tr>
             @endforeach
+        <!-- show only teaching courses for teacher -->
+        @elseif(auth()->user()->isTeacher())
+            @foreach($courses as $course)
+                @if(Auth::user()->id == $course->teacher_id)
+                <tr>
+                    <td>
+                        <img src="{{ asset('storage/'.$course->image) }}" width="120px" alt="">
+                    </td>
+                    <td>
+                        {{ $course->title }}
+                    </td>
+                    <td>
+                        <a href="{{ route('subjects.edit', $course->subject->id) }}">
+                            {{ $course->subject->name }}
+                        </a>
+                    </td>
+                    <td>
+                        {{ \App\User::where(['id' => $course->teacher_id])->first()->name }}
+                    </td>
+                    <td>
+                        <a href="{{ route('courses.show', $course->id) }}" class="btn btn-success btn-sm">Enter</a>
+                    </td>
+                    <td>
+                        <a href="{{ route('courses.edit', $course->id) }}" class="btn btn-info btn-sm">Edit</a>
+                    </td>
+                    <td>
+                    <button class="btn btn-danger btn-sm" onclick="handleDelete({{ $course->id }})">Delete</button>
+                    </td>
+                </tr>
+                @endif
+            @endforeach
+        @else
+            <!-- show courses for student  -->
+        @endif
         </tbody>
     </table>
 

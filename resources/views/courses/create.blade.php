@@ -63,6 +63,8 @@
                 </select>
             </div>
 
+            <input type="hidden" class="form-control" name="teacher" id="teacher" value="{{ Auth::user()->id }}">
+            
             <div class="form-group">
                 <button type="submit" class="btn btn-success">
                 {{ isset($course) ? 'Update Course': 'Create Course' }}

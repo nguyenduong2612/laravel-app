@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Requests\Courses;
+
 use Illuminate\Foundation\Http\FormRequest;
 
 class CreateCoursesRequest extends FormRequest
@@ -26,7 +27,8 @@ class CreateCoursesRequest extends FormRequest
             'description' => 'required',
             'image' => 'required|image',
             'video' => 'required',
-            'subject' => 'required'
+            'subject' => 'required',
+            'teacher' => 'required'
         ];
     }
 }

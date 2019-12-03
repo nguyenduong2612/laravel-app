@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Course;
 use App\Subject;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\Courses\CreateCoursesRequest;
 use App\Http\Requests\Courses\UpdateCoursesRequest;
@@ -31,7 +32,7 @@ class CoursesController extends Controller
         if (auth()->user()->isStudent()) {
             return redirect(route('home'));
         }
-        return view('courses.create')->with('subjects', Subject::all());
+        return view('courses.create')->with('subjects', Subject::all())->with('users', User::all());
     }
 
     /**
@@ -50,7 +51,8 @@ class CoursesController extends Controller
             'description' => $request->description,
             'image' => $image,
             'video' => $video,
-            'subject_id' => $request->subject
+            'subject_id' => $request->subject,
+            'teacher_id' => $request->teacher
         ]);
         // flash message
         session()->flash('success', 'Courses created successfully.');
