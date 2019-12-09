@@ -8,7 +8,12 @@
                 <div class="slider_info mt-5 text-center">
                     <h3>{{ $course->title }}</h3>
                     <h4 class="mb-5 text-white">{{ $course->description }}</h4>
-                    <a href="#" class="boxed_btn start-btn">START</a>
+                    <form action="{{ route('enrollments.store') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <input type="hidden" class="form-control" name="student_id" id="student_id" value="{{ Auth::user()->id }}">
+                        <input type="hidden" class="form-control" name="course_id" id="course_id" value="{{ $course->id }}">
+                        <button type="submit" class="boxed_btn start-btn">START</button>
+                    </form>
                 </div>
             </div>
         </div>

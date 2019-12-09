@@ -17,7 +17,7 @@
             </ul>
         </div>
     @endif
-    <form action="{{ isset($subject) ? route('subjects.update', $subject->id) : route('subjects.store') }}" method="POST">
+        <form action="{{ isset($subject) ? route('subjects.update', $subject->id) : route('subjects.store') }}" method="POST">
             @csrf
             @if(isset($subject))
                 @method('PUT')

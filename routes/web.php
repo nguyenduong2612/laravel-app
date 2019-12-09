@@ -32,7 +32,8 @@ Route::get('/all-courses', 'CoursesController@showAll')->name('all-courses');
 Route::resources([
     'subjects' => 'SubjectsController',
     'courses' => 'CoursesController',
-    'users' => 'UsersController'
+    'users' => 'UsersController',
+    'enrollments' => 'EnrollmentsController'
 ]);
 
 Route::middleware(['auth', 'admin'])->group(function () {
