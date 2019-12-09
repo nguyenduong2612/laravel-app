@@ -43,8 +43,8 @@ class CoursesController extends Controller
      */
     public function store(CreateCoursesRequest $request)
     {
-        $image = $request->image->store('courses','public');
-        $video = $request->video->store('courses','public');
+        $image = $request->image->store('','public');
+        $video = $request->video->store('','public');
         // create new course
         Course::create([
             'title' => $request->title,
@@ -100,14 +100,14 @@ class CoursesController extends Controller
             // delete old one
             unlink('storage/' . $course->image);
             // upload it
-            $image = $request->image->store('courses', 'public');
+            $image = $request->image->store('', 'public');
             $data['image'] = $image;
         }
         if ($request->hasFile('video')) {
             // delete old one
             unlink('storage/' . $course->video);
             // upload it
-            $image = $request->video->store('courses', 'public');
+            $video = $request->video->store('', 'public');
             $data['video'] = $video;
         }
         // update attributes

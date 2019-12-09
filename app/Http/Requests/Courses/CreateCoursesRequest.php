@@ -25,7 +25,7 @@ class CreateCoursesRequest extends FormRequest
         return [
             'title' => 'required|unique:courses',
             'description' => 'required',
-            'image' => 'required|image',
+            'image' => 'required',
             'video' => 'required',
             'subject' => 'required',
             'teacher' => 'required'
