@@ -86,6 +86,29 @@
             @endforeach
         @else
             <!-- show courses for student  -->
+            @foreach($courses as $course)
+                @if( \App\Http\Controllers\EnrollmentsController::checkEnroll(Auth::user()->id, $course->id) )
+                <tr>
+                    <td>
+                        <img src="{{ asset('storage/'.$course->image) }}" width="120px" alt="">
+                    </td>
+                    <td>
+                        {{ $course->title }}
+                    </td>
+                    <td>
+                        <a href="{{ route('subjects.edit', $course->subject->id) }}">
+                            {{ $course->subject->name }}
+                        </a>
+                    </td>
+                    <td>
+                        {{ \App\User::where(['id' => $course->teacher_id])->first()->name }}
+                    </td>
+                    <td>
+                        <a href="{{ route('courses.show', $course->id) }}" class="btn btn-success btn-sm">Enter</a>
+                    </td>
+                </tr>
+                @endif
+            @endforeach
         @endif
         </tbody>
     </table>

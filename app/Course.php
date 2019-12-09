@@ -10,9 +10,9 @@ class Course extends Model
         'title', 'description', 'image', 'video', 'published_at', 'subject_id', 'teacher_id'
     ];
 
-    public function user()
+    public function users()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsToMany(User::class);
     }
 
     public function subject()

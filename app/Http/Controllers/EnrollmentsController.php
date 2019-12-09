@@ -93,4 +93,14 @@ class EnrollmentsController extends Controller
         
         return redirect(route('enrollments.index'));
     }
+
+    public static function checkEnroll($current_id, $course_id)
+    {   
+        $enrollments = Enrollment::all();
+        foreach($enrollments as $enrollment) {
+            if(($enrollment->student_id == $current_id) && ($enrollment->course_id == $course_id))
+                return true;
+        }
+        return false;
+    }
 }

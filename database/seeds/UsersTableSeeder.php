@@ -19,7 +19,7 @@ class UsersTableSeeder extends Seeder
                 'role' => 'admin',
                 'name' => 'Admin',
                 'email' => 'admin@gmail.com',
-                'password' => Hash::make('admin')
+                'password' => Hash::make('123456')
             ]);
             User::create([
                 'role' => 'teacher',
@@ -31,6 +31,24 @@ class UsersTableSeeder extends Seeder
                 'role' => 'student',
                 'name' => 'Student',
                 'email' => 'student@gmail.com',
+                'password' => Hash::make('123456')
+            ]);
+            User::create([
+                'role' => 'student',
+                'name' => 'Student 2',
+                'email' => 'student2@gmail.com',
+                'password' => Hash::make('123456')
+            ]);
+            User::create([
+                'role' => 'student',
+                'name' => 'Student 3',
+                'email' => 'student3@gmail.com',
+                'password' => Hash::make('123456')
+            ]);
+            User::create([
+                'role' => 'student',
+                'name' => 'Student 4',
+                'email' => 'student4@gmail.com',
                 'password' => Hash::make('123456')
             ]);
         }
