@@ -1,5 +1,7 @@
 <?php
 
+use App\Course;
+use Illuminate\Support\Facades\Input;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +23,14 @@ Route::get('/about', function () {
 Route::get('/contact', function () {
     return view('contact');
 });
+Route::any ( '/search', function () {
+    $q = Input::get ( 'q' );
+    $course = Course::where ( 'title', 'LIKE', '%' . $q . '%' )->get();
+    if (count ( $course ) > 0)
+        return view ( 'search' )->withDetails ( $course )->withQuery ( $q );
+    else
+        return view ( 'search' )->withMessage ( 'No Details found. Try to search again !' );
+} );
 
 Auth::routes();
 

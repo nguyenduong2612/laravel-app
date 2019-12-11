@@ -70,7 +70,15 @@
                                 <div class="main-menu  d-none d-lg-block">
                                     <nav>
                                         <ul id="navigation">
-                                            <li><a href="{{ url('/') }}">Home</a></li>
+                                            <li>
+                                                <form action="/search" method="POST" role="search">
+                                                    {{ csrf_field() }}
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control mr-1" name="q" placeholder="Search courses">
+                                                        <button type="submit" class="btn btn-primary">Search</button> 
+                                                    </div>
+                                                </form>
+                                            </li>
                                             <li><a href="{{ url('/all-courses') }}">Courses</a></li>
                                             <li><a href="{{ url('/all-subjects') }}">Categories</a></li>
                                             <li><a href="{{ url('/community') }}">Community</a></li>
