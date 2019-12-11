@@ -48,9 +48,9 @@
                                                         <span>(4.5)</span>
                                                     </div>
                                                     <div class="prise">
-                                                        <span class="offer">$89.00</span>
+                                                        <span class="active_prise">Number of courses:  </span>
                                                         <span class="active_prise">
-                                                            $49
+                                                        {{ $subject->courses->count() }}
                                                         </span>
                                                     </div>
                                                 </div>
@@ -60,9 +60,9 @@
                                 @endforeach
                                 </div>
                                 <div class="col-xl-12">
-                                        <div class="more_courses text-center">
-                                            <a href="#" class="boxed_btn_rev">More Subjects</a>
-                                        </div>
+                                    <div class="more_courses text-center">
+                                        <!-- <a href="#" class="boxed_btn_rev">More Subjects</a> -->
+                                    </div>
                                 </div>
                         </div>
                     </div>

@@ -19,7 +19,8 @@ class CoursesController extends Controller
      */
     public function index()
     {
-        return view('courses.index')->with('courses', Course::all());
+        $courses = Course::orderBy('created_at', 'desc')->paginate(5);
+        return view('courses.index')->with('courses', $courses);
     }
 
     /**
@@ -135,6 +136,7 @@ class CoursesController extends Controller
 
     public function showAll()
     {
-        return view('courses.showAll')->with('courses', Course::all());
+        $courses = Course::orderBy('created_at', 'desc')->simplePaginate(6);
+        return view('courses.showAll')->with('courses', $courses);
     }
 }

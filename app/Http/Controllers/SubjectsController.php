@@ -17,7 +17,8 @@ class SubjectsController extends Controller
      */
     public function index()
     {
-        return view('subjects.index')->with('subjects', Subject::all());
+        $subjects =  Subject::orderBy('created_at', 'desc')->paginate(5);
+        return view('subjects.index')->with('subjects', $subjects);
     }
 
     /**

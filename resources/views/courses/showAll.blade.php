@@ -62,10 +62,10 @@
                                     </div>
                                 @endforeach
                                 </div>
-                                <div class="col-xl-12">
-                                        <div class="more_courses text-center">
-                                            <a href="#" class="boxed_btn_rev">More Courses</a>
-                                        </div>
+                                <div class="col-xl-12 text-center">
+                                    <div class="more_courses text-center">
+                                        {{ $courses->links() }}
+                                    </div>  
                                 </div>
                         </div>
                     </div>

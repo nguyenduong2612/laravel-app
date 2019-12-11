@@ -26,7 +26,7 @@
     </div>
 </div>
 
-<div>
+<div class="pb-5">
     <div class="container mt-4" style="min-height: 100vh; position: relative">
         <div class="cover">
         </div>
@@ -34,7 +34,7 @@
         <ul class="list-group list-group-flush text-center" style="font-size: 22px">
             <li class="list-group-item p-4">
                 <b>Join</b><br>
-                <h2 class="mt-4 mb-3">123456</h2>
+                <h2 class="mt-4 mb-3">{{ \App\Enrollment::where(['course_id' => $course->id])->count() }}</h2>
                 <b>people who have taken this course</b><br>
             </li>
             <li class="list-group-item p-4">
@@ -47,6 +47,24 @@
             </li>
         </ul>
         </div>
+
+        <div class="course-content" style="width: 70%">
+        @auth
+            @if( \App\Http\Controllers\EnrollmentsController::checkEnroll(Auth::user()->id, $course->id) )
+                <h3 class="pt-4 pb-3">Image</h3>
+                <img src="{{ asset('storage/'.$course->image) }}" alt="" style="width: 90%">
+                <h3 class="pt-4 pb-3">Video</h3>
+                <img src="{{ asset('storage/'.$course->video) }}" alt="" style="width: 90%">
+            @else
+                <h3 class="pt-4">Join course to see more awesome content !</h3>
+            @endif
+        @endauth
+        @guest
+            <h3 class="pt-4">Please log in to join this course !</h3>
+        @endguest
+        </div>
     </div>
 </div>
+
+
 @endsection
