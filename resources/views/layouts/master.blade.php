@@ -95,7 +95,10 @@
 
                                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                                     <a class="dropdown-item" href="{{ url('/home') }}" class="login popup-with-form">
-                                                        <span>My Page</span>
+                                                        <span>My page</span>
+                                                    </a>
+                                                    <a class="dropdown-item" href="{{  route('users.edit',  Auth::user()->id)  }}" class="login popup-with-form">
+                                                        <span>My profile</span>
                                                     </a>
                                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                                     onclick="event.preventDefault();
@@ -158,22 +161,22 @@
                                 <div class="socail_links">
                                     <ul>
                                         <li>
-                                            <a href="#">
+                                            <a href="javascript:;">
                                                 <i class="ti-facebook"></i>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <a href="javascript:;">
                                                 <i class="ti-twitter-alt"></i>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <a href="javascript:;">
                                                 <i class="fa fa-instagram"></i>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <a href="javascript:;">
                                                 <i class="fa fa-youtube-play"></i>
                                             </a>
                                         </li>
@@ -185,14 +188,14 @@
                         <div class="col-xl-2 offset-xl-1 col-md-6 col-lg-3">
                             <div class="footer_widget">
                                 <h3 class="footer_title">
-                                    Courses
+                                    Subjects
                                 </h3>
                                 <ul>
-                                    <li><a href="#">Wordpress</a></li>
-                                    <li><a href="#"> Photoshop</a></li>
-                                    <li><a href="#">Illustrator</a></li>
-                                    <li><a href="#">Adobe XD</a></li>
-                                    <li><a href="#">UI/UX</a></li>
+                                    <li><a href="javascript:;">Mathematics</a></li>
+                                    <li><a href="javascript:;"> Robotics</a></li>
+                                    <li><a href="javascript:;">Psychology</a></li>
+                                    <li><a href="javascript:;">Graphic Design</a></li>
+                                    <li><a href="javascript:;">Business Law</a></li>
                                 </ul>
 
                             </div>
@@ -200,14 +203,14 @@
                         <div class="col-xl-2 col-md-6 col-lg-2">
                             <div class="footer_widget">
                                 <h3 class="footer_title">
-                                    Resourches
+                                Resources
                                 </h3>
                                 <ul>
-                                    <li><a href="#">Free Adobe XD</a></li>
-                                    <li><a href="#">Tutorials</a></li>
-                                    <li><a href="#">About</a></li>
-                                    <li><a href="#"> About</a></li>
-                                    <li><a href="#"> Contact</a></li>
+                                    <li><a href="javascript:;">Free Adobe XD</a></li>
+                                    <li><a href="javascript:;">Tutorials</a></li>
+                                    <li><a href="javascript:;">About</a></li>
+                                    <li><a href="javascript:;"> About</a></li>
+                                    <li><a href="javascript:;"> Contact</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -217,9 +220,9 @@
                                     Address
                                 </h3>
                                 <p>
-                                    200, D-block, Green lane USA <br>
+                                    1 Đại Cồ Việt, Bách Khoa<br> Hai Bà Trưng, Hà Nội <br>
                                     +10 367 467 8934 <br>
-                                    edumark@contact.com
+                                    benedu@contact.com
                                 </p>
                             </div>
                         </div>

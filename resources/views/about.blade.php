@@ -22,7 +22,7 @@
                         </div>
                         <div class="master_name text-center">
                             <h3>Dương Hải Nguyên</h3>
-                            <p>Massage Master</p>
+                            <p>Coding with Heart</p>
                         </div>
                     </div>
                 </div>
@@ -38,7 +38,7 @@
                         </div>
                         <div class="master_name text-center">
                             <h3>Phan Quốc Toản</h3>
-                            <p>Mens Cut</p>
+                            <p>Ex-girlfriend is the best</p>
                         </div>
                     </div>
                 </div>
@@ -54,7 +54,7 @@
                         </div>
                         <div class="master_name text-center">
                             <h3>Nguyễn Đức Anh</h3>
-                            <p>Mens Cut</p>
+                            <p>Thanh Bear's lover</p>
                         </div>
                     </div>
                 </div>
@@ -70,7 +70,7 @@
                         </div>
                         <div class="master_name text-center">
                             <h3>Nguyễn Quang Anh</h3>
-                            <p>Ladies Cut</p>
+                            <p>Shiba-inu Ava chó</p>
                         </div>
                     </div>
                 </div>

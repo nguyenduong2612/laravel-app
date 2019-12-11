@@ -12,6 +12,7 @@
         <div class="col-lg-8 posts-list">
         <div class="comments-area">
             <div class="comment-list">
+            <h3>Join our Community</h3>
             @foreach ($posts as $post)
                 <div class="single-comment justify-content-between d-flex mt-4">
                     <div class="user justify-content-between d-flex">
@@ -25,7 +26,7 @@
                         <div class="d-flex justify-content-between">
                             <div class="d-flex align-items-center">
                                 <h5>
-                                <a href="#"> {{ \App\User::where(['id' => $post->user_id])->first()->name }}</a>
+                                <a href="javascript:;"> {{ \App\User::where(['id' => $post->user_id])->first()->name }}</a>
                                 </h5>
                                 <p class="date">{{$post->created_at}} </p>
                             </div>
@@ -41,7 +42,7 @@
             <div class="blog_right_sidebar">
                 <div class="comment-form">
                 @auth
-                    <h4>{{ Auth::user()->name }}</h4>
+                    <h4>Hello, {{ Auth::user()->name }}</h4>
                     <form class="form-contact comment_form" action="{{ route('posts.store') }}" enctype="multipart/form-data" method="POST">
                         @csrf
                         <div class="row">
@@ -54,7 +55,7 @@
                         </div>
                         <input type="hidden" class="form-control" name="user_id" id="user_id" value="{{ Auth::user()->id }}">
                         <div class="form-group">
-                            <button type="submit" class="button button-contactForm btn_1 boxed-btn">Send</button>
+                            <button type="submit" class="button button-contactForm btn_1 boxed-btn">Share</button>
                         </div>
                     </form>
                 @endauth

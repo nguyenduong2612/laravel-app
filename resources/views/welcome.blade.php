@@ -16,7 +16,7 @@
                             <h3>Learn your <br>
                                 Favorite Course <br>
                                 From Online</h3>
-                            <a href="{{ url('/all-courses') }}" class="boxed_btn">Browse Our Courses</a>
+                            <a href="{{ url('/all-subjects') }}" class="boxed_btn">Browse Our Subjects</a>
                         </div>
                     </div>
                 </div>
@@ -32,11 +32,11 @@
                 <div class="col-xl-5 col-lg-6">
                     <div class="single_about_info">
                         <h3>Over 7000 Tutorials <br>
-                            from 20 Courses</h3>
+                            from 20 Subjects</h3>
                         <p>Our set he for firmament morning sixth subdue darkness creeping gathered divide our let god
                             moving. Moving in fourth air night bring upon you’re it beast let you dominion likeness open
                             place day great wherein heaven sixth lesser subdue fowl </p>
-                        <a href="#" class="boxed_btn">Enroll a Course</a>
+                        <a href="{{ url('/all-courses') }}" class="boxed_btn">Enroll a Course</a>
                     </div>
                 </div>
                 <div class="col-xl-6 offset-xl-1 col-lg-6">
@@ -45,7 +45,7 @@
                             <div class="inner_courses">
                                 <div class="text_info">
                                     <span>20+</span>
-                                    <p> Courses</p>
+                                    <p> Subjects</p>
                                 </div>
                             </div>
                         </div>
@@ -62,7 +62,7 @@
                             <div class="inner_courses">
                                 <div class="text_info">
                                     <span>230+</span>
-                                    <p> Courses</p>
+                                    <p> Teachers</p>
                                 </div>
 
                             </div>
@@ -420,7 +420,7 @@
                                 <p>12 Jun, 2019 in <a href="#">Design tips</a></p>
                             </div>
                             <div class="blog_meta">
-                                <h3><a href="#">Commitment to dedicated Support</a></h3>
+                                <h3><a href="">Commitment to dedicated Support</a></h3>
                             </div>
                             <p class="blog_text">
                                 Firmament morning sixth subdue darkness creeping gathered divide.
@@ -438,7 +438,7 @@
                                 <p>12 Jun, 2019 in <a href="#">Design tips</a></p>
                             </div>
                             <div class="blog_meta">
-                                <h3><a href="#">Commitment to dedicated Support</a></h3>
+                                <h3><a href="">Commitment to dedicated Support</a></h3>
                             </div>
                             <p class="blog_text">
                                 Firmament morning sixth subdue darkness creeping gathered divide.
@@ -456,7 +456,7 @@
                                 <p>12 Jun, 2019 in <a href="#">Design tips</a></p>
                             </div>
                             <div class="blog_meta">
-                                <h3><a href="#">Commitment to dedicated Support</a></h3>
+                                <h3><a href="">Commitment to dedicated Support</a></h3>
                             </div>
                             <p class="blog_text">
                                 Firmament morning sixth subdue darkness creeping gathered divide.

@@ -50,12 +50,6 @@
                                                         <i class="flaticon-mark-as-favorite-star"></i>
                                                         <span>(4.5)</span>
                                                     </div>
-                                                    <div class="prise">
-                                                        <span class="offer">$89.00</span>
-                                                        <span class="active_prise">
-                                                            $49
-                                                        </span>
-                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
