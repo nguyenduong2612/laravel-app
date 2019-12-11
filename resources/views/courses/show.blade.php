@@ -12,17 +12,41 @@
                     @if( \App\Http\Controllers\EnrollmentsController::checkEnroll(Auth::user()->id, $course->id) )
                         <a href="#" class="boxed_btn start-btn">CONTINUE</a>
                     @else
-                        <form action="{{ route('enrollments.store') }}" method="POST" enctype="multipart/form-data">
-                            @csrf
-                            <input type="hidden" class="form-control" name="student_id" id="student_id" value="{{ Auth::user()->id }}">
-                            <input type="hidden" class="form-control" name="course_id" id="course_id" value="{{ $course->id }}">
-                            <button type="submit" class="boxed_btn start-btn">START</button>
-                        </form>
+                        <button class="boxed_btn start-btn" onclick="handle()">START</button>
                     @endif
                     @endauth
                 </div>
             </div>
         </div>
+    </div>
+</div>
+
+<div class="modal fade" id="joinModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <form id="joinCourseForm" action="{{ route('enrollments.store') }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            @auth
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Join Course</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p class="text-center text-bold">
+                Are you sure you want to join this course ?
+                </p>
+            </div>
+            <input type="hidden" class="form-control" name="student_id" id="student_id" value="{{ Auth::user()->id }}">
+            <input type="hidden" class="form-control" name="course_id" id="course_id" value="{{ $course->id }}">
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">No, Go back</button>
+                <button type="submit" class="btn btn-danger">Yes, I'm sure</button>
+            </div>
+            </div>
+            @endauth
+        </form>
     </div>
 </div>
 
@@ -67,4 +91,13 @@
 </div>
 
 
+@endsection
+
+@section('scripts')
+    <script>
+        function handle() {
+            var form = document.getElementById('joinCourseForm')
+            $('#joinModal').modal('show')
+        }
+    </script>
 @endsection

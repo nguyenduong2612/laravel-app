@@ -85,3 +85,12 @@
     </div>
 </div>
 @endsection
+
+@section('scripts')
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script>
+    flatpickr('#published_at', {
+      enableTime: true
+    })
+  </script>
+@endsection
