@@ -27,12 +27,14 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/all-subjects', 'SubjectsController@showAll')->name('all-subjects');
 Route::get('/all-courses', 'CoursesController@showAll')->name('all-courses');
+Route::get('/community', 'PostsController@index')->name('community');
 
 Route::resources([
     'subjects' => 'SubjectsController',
     'courses' => 'CoursesController',
     'users' => 'UsersController',
-    'enrollments' => 'EnrollmentsController'
+    'enrollments' => 'EnrollmentsController',
+    'posts' => 'PostsController'
 ]);
 
 Route::middleware(['auth', 'admin'])->group(function () {
