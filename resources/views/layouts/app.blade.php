@@ -44,7 +44,7 @@
                         <div class="col-xl-2 col-lg-2">
                             <div class="logo-img">
                                 <a href="{{ url('/') }}">
-                                    <img src="img/logo.png" alt="">
+                                    <img src="{{asset('img/logo.png')}}" width="150" alt="">
                                 </a>
                             </div>
                         </div>
@@ -162,7 +162,7 @@
                             <div class="footer_widget">
                                 <div class="footer_logo">
                                     <a href="#">
-                                        <img src="img/logo.png" alt="">
+                                        <img src="{{asset('img/logo.png')}}" width="200" alt="">
                                     </a>
                                 </div>
                                 <p>
