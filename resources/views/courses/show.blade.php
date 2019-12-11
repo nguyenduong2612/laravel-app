@@ -8,6 +8,7 @@
                 <div class="slider_info mt-5 text-center">
                     <h3>{{ $course->title }}</h3>
                     <h4 class="mb-5 text-white">{{ $course->description }}</h4>
+                    @auth
                     @if( \App\Http\Controllers\EnrollmentsController::checkEnroll(Auth::user()->id, $course->id) )
                         <a href="#" class="boxed_btn start-btn">CONTINUE</a>
                     @else
@@ -18,7 +19,7 @@
                             <button type="submit" class="boxed_btn start-btn">START</button>
                         </form>
                     @endif
-                    
+                    @endauth
                 </div>
             </div>
         </div>

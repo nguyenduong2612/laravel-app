@@ -19,7 +19,7 @@ class CoursesTableSeeder extends Seeder
         for ($i = 0; $i < $limit; $i++) {
             Course::create([
                 'title' => $faker->jobTitle,
-                'description' => 'description',
+                'description' => $faker->text($maxNbChars = 100),
                 'image' => $faker->image('public/storage/',400,300, 'abstract', false),
                 'video' => $faker->image('public/storage/',400,300, 'abstract', false),
                 'subject_id' => rand(1,7),
