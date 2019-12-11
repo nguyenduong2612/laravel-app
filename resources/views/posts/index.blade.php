@@ -7,55 +7,63 @@
     </div>
 </div>
 
-<div class="container">
-         <div class="row">
-            <div class="col-lg-8 posts-list">
-               <div class="comments-area">
-                  <div class="comment-list">
-                     <div class="single-comment justify-content-between d-flex">
-                        <div class="user justify-content-between d-flex">
-                           <div class="thumb">
-                              <img src="img/comment/comment_1.png" alt="">
-                           </div>
-                           <div class="desc">
-                              <p class="comment">
-                                 Multiply sea night grass fourth day sea lesser rule open subdue female fill which them
-                                 Blessed, give fill lesser bearing multiply sea night grass fourth day sea lesser
-                              </p>
-                              <div class="d-flex justify-content-between">
-                                 <div class="d-flex align-items-center">
-                                    <h5>
-                                       <a href="#">Emilly Blunt</a>
-                                    </h5>
-                                    <p class="date">December 4, 2017 at 3:12 pm </p>
-                                 </div>
-                              </div>
-                           </div>
+<div class="container" style="min-height: 100vh">
+    <div class="row">
+        <div class="col-lg-8 posts-list">
+        <div class="comments-area">
+            <div class="comment-list">
+            @foreach ($posts as $post)
+                <div class="single-comment justify-content-between d-flex mt-4">
+                    <div class="user justify-content-between d-flex">
+                    <div class="thumb">
+                        <img src="img/comment/comment_1.png" alt="">
+                    </div>
+                    <div class="desc">
+                        <p class="comment">
+                            {{ $post->content }}
+                        </p>
+                        <div class="d-flex justify-content-between">
+                            <div class="d-flex align-items-center">
+                                <h5>
+                                <a href="#"> {{ \App\User::where(['id' => $post->user_id])->first()->name }}</a>
+                                </h5>
+                                <p class="date">{{$post->created_at}} </p>
+                            </div>
                         </div>
-                     </div>
-                  </div>
-               </div>
+                    </div>
+                    </div>
+                </div>
+            @endforeach
             </div>
-            <div class="col-lg-4">
-               <div class="blog_right_sidebar">
-               <div class="comment-form">
-                        <h4>Comment</h4>
-                        <form class="form-contact comment_form" action="#" id="commentForm">
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="form-group">
-                                        <textarea class="form-control w-100" name="comment" id="comment" cols="30" rows="9"
-                                            placeholder="Write Comment"></textarea>
-                                    </div>
+        </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="blog_right_sidebar">
+                <div class="comment-form">
+                @auth
+                    <h4>{{ Auth::user()->name }}</h4>
+                    <form class="form-contact comment_form" action="{{ route('posts.store') }}" enctype="multipart/form-data" method="POST">
+                        @csrf
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <textarea class="form-control w-100" name="content" id="content" cols="30" rows="9"
+                                        placeholder="What's in your mind"></textarea>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <button type="submit" class="button button-contactForm btn_1 boxed-btn">Send Message</button>
-                            </div>
-                        </form>
-                    </div>  
-               </div>
+                        </div>
+                        <input type="hidden" class="form-control" name="user_id" id="user_id" value="{{ Auth::user()->id }}">
+                        <div class="form-group">
+                            <button type="submit" class="button button-contactForm btn_1 boxed-btn">Send</button>
+                        </div>
+                    </form>
+                @endauth
+                @guest
+                    <h4>Please log in to discuss with us!</h4>
+                @endguest
+                </div>  
             </div>
-         </div>
-      </div>
+        </div>
+    </div>
+</div>
 @endsection

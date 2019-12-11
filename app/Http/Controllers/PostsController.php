@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Post;
 use Illuminate\Http\Request;
+use App\Http\Requests\Posts\CreatePostsRequest;
 
 class PostsController extends Controller
 {
@@ -13,7 +15,8 @@ class PostsController extends Controller
      */
     public function index()
     {
-        return view('posts.index');
+        $posts = Post::orderBy('created_at', 'desc')->get();
+        return view('posts.index')->with('posts', $posts);
     }
 
     /**
@@ -32,9 +35,15 @@ class PostsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreatePostsRequest $request)
     {
-        //
+            Post::create([
+                'user_id' => $request->user_id,
+                'content' => $request->content,
+                'image' => $request->image
+            ]);
+
+        return redirect(route('posts.index'));
     }
 
     /**
