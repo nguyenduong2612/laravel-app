@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\Votes\CreateVotesRequest;
+use App\Votes;
 
 class VotesController extends Controller
 {
@@ -13,7 +15,8 @@ class VotesController extends Controller
      */
     public function index()
     {
-        //
+        $votes = Votes::orderBy('created_at', 'desc')->get();
+        return view('votes.index')->with('votes', $votes);
     }
 
     /**
@@ -32,9 +35,17 @@ class VotesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateVotesRequest $request)
     {
-        //
+        Votes::create([
+            'star' => $request->star,
+            'student_id' => $request->student_id,
+            'course_id' => $request->course_id
+            
+        ]);
+        
+        // redirect back
+        return redirect(route('home'));
     }
 
     /**
