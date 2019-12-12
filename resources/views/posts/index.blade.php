@@ -31,7 +31,7 @@
                                 <h5>
                                 <a href="javascript:;"> {{ \App\User::where(['id' => $post->user_id])->first()->name }}</a>
                                 </h5>
-                                <p class="date">{{$post->created_at}} </p>
+                                <p class="date">{{$post->created_at->diffForHumans()}} </p>
                             </div>
                         </div>
                     </div>
