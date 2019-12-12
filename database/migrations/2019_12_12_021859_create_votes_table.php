@@ -15,7 +15,7 @@ class CreateVotesTable extends Migration
     {
         Schema::create('votes', function (Blueprint $table) {
             $table->increments('id');
-            $table->float('star');
+            $table->float('star')->default('0.0');
             $table->integer('student_id')->unsigned()->index();
             $table->foreign('student_id')->references('id')->on('users')->onDelete('cascade');
 

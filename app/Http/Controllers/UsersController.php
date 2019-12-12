@@ -68,13 +68,28 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateProfileRequest $request)
+    public function update(UpdateProfileRequest $request, User $user)
     {
         $user = auth()->user();
-        $user->update([
-            'name' => $request->name,
-            'about' => $request->about
-        ]);
+        $data = $request->only(['name', 'about']);
+
+        if ($request->hasFile('avatar')) {
+            // delete old one
+            if ($user->avatar != NULL) {
+                unlink('storage/' . $user->avatar);
+            }
+            // upload it
+            $avatar = $request->avatar->store('', 'public');
+            $data['avatar'] = $avatar;
+        }
+
+        $user->update($data);
+        // $user->update([
+        //     'name' => $request->name,
+        //     'about' => $request->about,
+        //     'avatar' => $request->avatar
+        // ]);
+        
         session()->flash('success', 'User updated successfully.');
         return redirect()->back();
     }
