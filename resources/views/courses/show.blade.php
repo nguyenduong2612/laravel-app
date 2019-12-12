@@ -69,6 +69,10 @@
                 <b>Prerequisites</b><br>
                 <h2 class="mt-4 mb-3">None</h2>
             </li>
+            <li class="list-group-item p-4">
+                <b>Vote</b><br>
+                <h2 class="mt-4 mb-3">{{ \App\Course::where(['id' => $course->id])->first()->vote }}</h2>
+            </li>
         </ul>
         </div>
 
