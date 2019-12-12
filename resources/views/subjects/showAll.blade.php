@@ -22,8 +22,8 @@
                     <div class="col-xl-12">
                         <div class="section_title text-center mb-100">
                             <h3>All Subjects</h3>
-                            <p>Your domain control panel is designed for ease-of-use and <br> allows for all aspects of your
-                                domains.</p>
+                            <p>Explore our programs and courses, try an exercise or two<br> 
+                        and join our community of 45 million learners.</p>
                         </div>
                     </div>
                 </div>
@@ -45,7 +45,7 @@
                                                 <div class="star_prise d-flex justify-content-between">
                                                     <div class="star">
                                                         <i class="flaticon-mark-as-favorite-star"></i>
-                                                        <span>(4.5)</span>
+                                                        <span>{{rand(40, 50) / 10 }}</span>
                                                     </div>
                                                     <div class="prise">
                                                         <span class="active_prise">Number of courses:  </span>

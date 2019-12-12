@@ -315,8 +315,8 @@
                 <div class="col-xl-12">
                     <div class="section_title text-center mb-100">
                         <h3>Our Course Speciality</h3>
-                        <p>Your domain control panel is designed for ease-of-use and <br>
-                            allows for all aspects of your domains.
+                        <p>Explore our programs and courses, try an exercise or two<br> 
+                        and join our community of 45 million learners.
                         </p>
                     </div>
                 </div>
@@ -329,8 +329,7 @@
                         </div>
                         <h3>Premium Quality</h3>
                         <p>
-                            Your domain control panel is designed for ease-of-use <br> and <br>
-                            allows for all aspects of
+                            Top instructors from around the world teach millions of students on Benedu
                         </p>
                     </div>
                 </div>
@@ -339,10 +338,9 @@
                         <div class="icon blue">
                             <i class="flaticon-business-and-finance"></i>
                         </div>
-                        <h3>Premium Quality</h3>
+                        <h3>Low Cost</h3>
                         <p>
-                            Your domain control panel is designed for ease-of-use <br> and <br>
-                            allows for all aspects of
+                            Anywhere, anytime. Enjoy risk-free with our 30-day, <br> money-back guarantee.
                         </p>
                     </div>
                 </div>
@@ -351,10 +349,9 @@
                         <div class="icon">
                             <i class="flaticon-premium"></i>
                         </div>
-                        <h3>Premium Quality</h3>
+                        <h3>Awesome Content</h3>
                         <p>
-                            Your domain control panel is designed for ease-of-use <br> and <br>
-                            allows for all aspects of
+                        Choose from over 100,000 online courses <br>with new additions published every month
                         </p>
                     </div>
                 </div>
@@ -363,10 +360,9 @@
                         <div class="icon gradient">
                             <i class="flaticon-crown"></i>
                         </div>
-                        <h3>Premium Quality</h3>
+                        <h3>Highly Recommended</h3>
                         <p>
-                            Your domain control panel is designed for ease-of-use <br> and <br>
-                            allows for all aspects of
+                            Benedu courses have been taken by employees at many companies in the world
                         </p>
                     </div>
                 </div>

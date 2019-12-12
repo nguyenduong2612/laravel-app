@@ -3,7 +3,9 @@
 @section('content')
 <div class="card card-default">
     <div class="card-header">
+        <h2 class="mt-2">
         {{ isset($subject)  ? 'Edit Subject' : 'Create Subject' }}
+        </h2>
     </div>
     <div class="card-body">
     @if($errors->any())

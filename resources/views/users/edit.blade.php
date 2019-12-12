@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="card">
-    <div class="card-header">My Profile</div>
+    <div class="card-header"><h2 class="mt-2">My Profile</h2></div>
 
     <div class="card-body">
         <form action="{{ route('users.update', $user->id) }}" method="POST">

@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="card card-default">
-    <div class="card-header">Users</div>
+    <div class="card-header"><h2 class="mt-2">User</h2></div>
 
     <div class="card-body">
         @if($users->count() > 0)
