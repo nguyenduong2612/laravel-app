@@ -21,6 +21,7 @@ class CreateCoursesTable extends Migration
             $table->string('video');
             $table->integer('subject_id');
             $table->integer('teacher_id');
+            $table->float('vote');
             $table->timestamp('published_at')->nullable();
             $table->timestamps();
         });
