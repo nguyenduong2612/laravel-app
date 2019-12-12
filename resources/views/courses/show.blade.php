@@ -187,29 +187,39 @@
                             <div class="auhor_header">
                                 
                                 <div class="name">
-                                    <h3>People Enrolled</h3>
+                                    <h2>People Enrolled</h2>
                                     <br>
                                     <h2 >{{ \App\Enrollment::where(['course_id' => $course->id])->count() }}</h2>
                                 </div>
                             </div>
                             
                         </div>
-                        <div class="author_info">
+                        <div class="author_info"> 
                             <div class="auhor_header">
-                                
+                                <h2 class="mb-3">Created by</h2>
+                                <div class="thumb">
+                                    <img style="border-radius: 50%" src="{{ asset('storage/'.\App\User::where(['id' => $course->teacher_id])->first()->avatar) }}" alt="" width=60 height=60>
+                                </div>
                                 <div class="name">
-                                    <h3>Create by</h3>
-                                    <br>
-                                    <h2 >{{ \App\User::where(['id' => $course->teacher_id])->first()->name }}</h2>
+                                    <h3>{{ \App\User::where(['id' => $course->teacher_id])->first()->name }}</h3>
+                                    <p>Professional Teacher</p>
                                 </div>
                             </div>
+                            <p class="text_info">
+                                {{ \App\User::where(['id' => $course->teacher_id])->first()->about }}
+                            </p>
+                            <ul>
+                                <li><a href="#"> <i class="fa fa-envelope"></i> </a></li>
+                                <li><a href="#"> <i class="fa fa-twitter"></i> </a></li>
+                                <li><a href="#"> <i class="ti-linkedin"></i> </a></li>
+                            </ul>
                             
                         </div>
                         <div class="author_info">
                             <div class="auhor_header">
                                 
                                 <div class="name">
-                                    <h3>Prerequisites</h3>
+                                    <h2>Prerequisites</h2>
                                     <br>
                                     <h2 >None</h2>
                                 </div>

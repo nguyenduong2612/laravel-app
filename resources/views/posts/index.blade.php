@@ -17,7 +17,10 @@
                 <div class="single-comment justify-content-between d-flex mt-4">
                     <div class="user justify-content-between d-flex">
                     <div class="thumb">
-                        <img src="img/comment/comment_1.png" alt="">
+                        @if( \App\User::where(['id' => $post->user_id])->first()->avatar == NULL)
+                        <img style="border-radius: 50%" src="img/blog/default-avatar.png" alt="" width=70 height=70>
+                        @endif
+                        <img src="{{ asset('storage/'.\App\User::where(['id' => $post->user_id])->first()->avatar) }}" alt="" width=70 height=70>
                     </div>
                     <div class="desc">
                         <p class="comment">
@@ -42,7 +45,14 @@
             <div class="blog_right_sidebar">
                 <div class="comment-form">
                 @auth
-                    <h4>Hello, {{ Auth::user()->name }}</h4>
+                    <div class="name mb-3">
+                        @if( \App\User::where(['id' => Auth::user()->id])->first()->avatar == NULL)
+                        <img style="border-radius: 50%" src="img/blog/default-avatar.png" alt="" width=70 height=70>
+                        @endif
+                        <img style="border-radius: 50%" src="{{ asset('storage/'.\App\User::where(['id' => Auth::user()->id])->first()->avatar) }}" alt="" width=70 height=70>
+                        <h4 class="d-inline ml-3">Hello, {{ Auth::user()->name }}</h4>
+                    </div>
+                    
                     <form class="form-contact comment_form" action="{{ route('posts.store') }}" enctype="multipart/form-data" method="POST">
                         @csrf
                         <div class="row">
