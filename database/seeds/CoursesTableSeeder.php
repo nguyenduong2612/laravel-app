@@ -22,6 +22,7 @@ class CoursesTableSeeder extends Seeder
                 'description' => $faker->text($maxNbChars = 100),
                 'image' => $faker->image('public/storage/',400,300, 'abstract', false),
                 'video' => $faker->image('public/storage/',400,300, 'abstract', false),
+                'cost' => rand(20, 100),
                 'subject_id' => rand(1,7),
                 'teacher_id' => 1
             ]);

@@ -19,6 +19,7 @@ class CreateCoursesTable extends Migration
             $table->string('description');
             $table->string('image');
             $table->string('video');
+            $table->integer('cost');
             $table->integer('subject_id');
             $table->integer('teacher_id');
             $table->timestamp('published_at')->nullable();
