@@ -191,8 +191,6 @@
                         <div class="feedback_info">
                             <h2>Write your feedback</h2>
                             <p>Your rating</p>
-                            
-                            
                             <form action="{{ route('votes.store') }}" enctype="multipart/form-data" method = "POST">
                                 @csrf
 		                        <fieldset class='rate'>
@@ -207,12 +205,17 @@
                                     <input id='rate1-star1' type='radio' name='star' value='1' />
                                     <label for='rate1-star1' title='Very bad'>1</label>
                                 </fieldset>
+                                @for ($i = 1; $i < 6; $i++)
+                                    @if( \App\Http\Controllers\VotesController::checkVote(Auth::user()->id, $course->id) == $i )
+                                        <script>document.getElementById("rate1-star" + <?php echo $i; ?>).checked = true;</script>
+                                        @break
+                                    @endif
+                                @endfor
                                 <input type="hidden" class="form-control" name="student_id" id="student_id" value="{{ Auth::user()->id }}">
                                 <input type="hidden" class="form-control" name="course_id" id="course_id" value="{{ $course->id}}">
 	  	                        <input type="submit" class="btn btn-primary d-block" value="Submit">
 
-	  	<!-- <button type="button" class="btn btn-primary" onclick="window.location.href='?thamso=register'">Đăng ký</button> -->
-	                            </form>
+	                        </form>
                         </div>
                         @endif
                         @endauth
