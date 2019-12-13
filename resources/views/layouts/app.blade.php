@@ -156,10 +156,10 @@
                                 <nav id="sidebar">
                                     <ul class="list-unstyled components">
                                         <li>
-                                            <a href="{{ route('courses.index') }}">Courses</a>
+                                            <a href="{{ route('subjects.index') }}"><i class="ti-layout-grid2 mr-3"></i>Subjects</a>
                                         </li>
                                         <li>
-                                            <a href="{{ route('subjects.index') }}">Subjects</a>
+                                            <a href="{{ route('courses.index') }}"><i class="ti-book mr-3"></i>Courses</a>
                                         </li>
                                     </ul>
                                 </nav>
