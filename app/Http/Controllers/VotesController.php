@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Requests\Votes\CreateVotesRequest;
 use App\Votes;
 
@@ -37,12 +38,17 @@ class VotesController extends Controller
      */
     public function store(CreateVotesRequest $request)
     {
-        Votes::create([
-            'star' => $request->star,
-            'student_id' => $request->student_id,
-            'course_id' => $request->course_id
+        // Votes::create([
+        //     'star' => $request->star,
+        //     'student_id' => $request->student_id,
+        //     'course_id' => $request->course_id
             
-        ]);
+        // ]);
+        DB::table('votes')
+            ->updateOrInsert(
+                ['student_id' => $request->student_id, 'course_id' => $request->course_id],
+                ['star' => $request->star]
+    );
         
         // redirect back
         return redirect()->back();

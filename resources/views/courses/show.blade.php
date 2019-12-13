@@ -192,7 +192,6 @@
                             <h2>Write your feedback</h2>
                             <p>Your rating</p>
                             
-                            
                             <form action="{{ route('votes.store') }}" enctype="multipart/form-data" method = "POST">
                                 @csrf
 		                        <fieldset class='rate'>
@@ -211,8 +210,7 @@
                                 <input type="hidden" class="form-control" name="course_id" id="course_id" value="{{ $course->id}}">
 	  	                        <input type="submit" class="btn btn-primary d-block" value="Submit">
 
-	  	<!-- <button type="button" class="btn btn-primary" onclick="window.location.href='?thamso=register'">Đăng ký</button> -->
-	                            </form>
+	                        </form>
                         </div>
                         @endif
                         @endauth
