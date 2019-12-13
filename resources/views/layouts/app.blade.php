@@ -156,6 +156,9 @@
                                         <li>
                                             <a href="{{ route('courses.index') }}"><i class="ti-book mr-3"></i>Courses</a>
                                         </li>
+                                        <li>
+                                            <a href="{{ route('lessons.index') }}"><i class="ti-book mr-3"></i>Lessons</a>
+                                        </li>
                                     </ul>
                                 </nav>
 
