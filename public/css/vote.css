@@ -1,3 +1,7 @@
+.indexVote{
+    color: white;
+    margin-left: 5px;
+}
 .checked {
 	color: orange;
 }

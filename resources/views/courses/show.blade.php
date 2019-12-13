@@ -11,16 +11,23 @@
                                 <span class="inactive">$89.00</span>
                                 <span class="active">$49</span>
                             </div> -->
-                            <div class="rating">
-                                <i class="flaticon-mark-as-favorite-star"></i>
-                                <i class="flaticon-mark-as-favorite-star"></i>
-                                <i class="flaticon-mark-as-favorite-star"></i>
-                                <i class="flaticon-mark-as-favorite-star"></i>
-                                <i class="flaticon-mark-as-favorite-star"></i>
+                            @php
+                                $star = \App\Votes::where(['course_id' => $course->id])->avg('star') ;
+                                $starInt = round($star);
+                                $starFloat=round($star,1);
+                            @endphp
+                            <div class='stars'>
+                                @for ($i = 0; $i < $starInt; $i++)
+                                    <span class='fa fa-star checked' ></span>
+                                @endfor
+                                @for ($i = $starInt; $i < 5; $i++)
+                                    <span class='fa fa-star' style="color : white" ></span>
+                                @endfor
+                                
                                 @if ( \App\Votes::where(['course_id' => $course->id]) )
-                                    <span>{{ \App\Votes::where(['course_id' => $course->id])->avg('star') }}</span>
+                                    <span class="indexVote">{{$starFloat}}</span>
                                 @else
-                                    <span>0.0</span>
+                                    <span class="indexVote">0.0</span>
                                 @endif
                             </div>
                             <div class="hours">
