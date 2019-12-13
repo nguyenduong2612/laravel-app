@@ -36,6 +36,11 @@
                                                         @endphp
                                                         <span>{{$starFloat }}</span>
                                                     </div>
+                                                    <div class="prise">
+                                                        <span class="active_prise">
+                                                            ${{$course->cost}}
+                                                        </span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>

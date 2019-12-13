@@ -145,7 +145,7 @@
                 <div class="container">
                     <div class="row">
                         
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="wrapper slider_bg_1">
                                 <!-- Sidebar -->
                                 <nav id="sidebar">
@@ -174,7 +174,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-8">
+                        <div class="col-md-9">
                             @if(session()->has('success'))
                                 <div class="alert alert-success">
                                     {{ session()->get('success') }}

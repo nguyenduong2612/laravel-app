@@ -33,10 +33,10 @@
                             <div class="hours">
                                 <div class="video">
                                      <div class="single_video">
-                                            <i class="fa fa-clock-o"></i> <span>12 Videos</span>
+                                            <i class="fa fa-play-circle-o"></i> <span>{{$course->lessons->count()}} Lessons</span>
                                      </div>
                                      <div class="single_video">
-                                            <i class="fa fa-play-circle-o"></i> <span>9 Hours</span>
+                                            <i class="fa fa-clock-o"></i> <span>{{rand(1,10)}} Hours</span>
                                      </div>
                                    
                                 </div>
