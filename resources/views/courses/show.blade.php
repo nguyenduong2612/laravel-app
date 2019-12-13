@@ -16,7 +16,7 @@
                                 $starInt = round($star);
                                 $starFloat=round($star,1);
                             @endphp
-                            <div class='stars'>
+                            <div class="stars mt-2 mb-3" style="font-size: 20px;">
                                 @for ($i = 0; $i < $starInt; $i++)
                                     <span class='fa fa-star checked' ></span>
                                 @endfor

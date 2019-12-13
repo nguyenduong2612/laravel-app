@@ -65,7 +65,10 @@ class LessonsController extends Controller
      */
     public function edit(Lesson $lesson)
     {
-        //
+        if (auth()->user()->isStudent()) {
+            return redirect(route('home'));
+        }
+        return view('lessons.edit')->with('lesson', $lesson);
     }
 
     /**
@@ -77,7 +80,14 @@ class LessonsController extends Controller
      */
     public function update(UpdateLessonsRequest $request, Lesson $lesson)
     {
-        //
+        $data = $request->only(['title', 'description']);
+        
+        $lesson->update($data);
+
+        session()->flash('success', 'Lesson updated successfully.');
+        // redirect user
+        return redirect(route('lessons.index'));
+
     }
 
     /**
