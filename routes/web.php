@@ -39,10 +39,12 @@ Route::get('/all-subjects', 'SubjectsController@showAll')->name('all-subjects');
 Route::get('/all-courses', 'CoursesController@showAll')->name('all-courses');
 Route::get('/community', 'PostsController@index')->name('community');
 Route::get('/contact', 'ContactsController@index')->name('contact');
+Route::post('/add-lesson', 'CoursesController@addLesson')->name('courses.add-lesson');
 
 Route::resources([
     'subjects' => 'SubjectsController',
     'courses' => 'CoursesController',
+    'lessons' => 'LessonsController',
     'users' => 'UsersController',
     'enrollments' => 'EnrollmentsController',
     'posts' => 'PostsController',

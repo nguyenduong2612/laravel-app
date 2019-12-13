@@ -96,87 +96,28 @@
                         
                         <h3>Video</h3>
                         <p><img src="{{ asset('storage/'.$course->video) }}" alt="" style="width: 90%"></p>
-                    <!-- <h3 class="second_title">Video</h3> -->
+                    
                     </div>
-                    <div class="outline_courses_info">
-                            <!-- <div id="accordion">
-                                    <div class="card">
-                                        <div class="card-header" id="headingTwo">
-                                            <h5 class="mb-0">
-                                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                                    <i class="flaticon-question"></i> Is WordPress hosting worth it?
-                                                </button>
-                                            </h5>
-                                        </div>
-                                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-                                            <div class="card-body">
-                                                Our set he for firmament morning sixth subdue darkness creeping gathered divide our
-                                                let god moving. Moving in fourth air night bring upon
-                                            </div>
+                    <div class="single_courses outline_courses_info mt-5">
+                        <h3 >Lesson</h3>
+                        <div id="accordion">
+                            @foreach ($course->lessons as $lesson)
+                                <div class="card">
+                                    <div class="card-header" id="headingTwo">
+                                        <h5 class="mb-0">
+                                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#{{$lesson->id}}" aria-expanded="false" aria-controls="collapseTwo">
+                                                <i class="flaticon-question"></i> {{$lesson->title}}
+                                            </button>
+                                        </h5>
+                                    </div>
+                                    <div id="{{$lesson->id}}" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                        <div class="card-body">
+                                        {{$lesson->description}}
                                         </div>
                                     </div>
-                                    <div class="card">
-                                        <div class="card-header" id="headingOne">
-                                            <h5 class="mb-0">
-                                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                                                    <i class="flaticon-question"></i>Basic Classes</span>
-                                                </button>
-                                            </h5>
-                                        </div>
-                                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion" style="">
-                                            <div class="card-body">
-                                                Our set he for firmament morning sixth subdue darkness creeping gathered divide our
-                                                let god moving. Moving in fourth air night bring upon
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card">
-                                        <div class="card-header" id="headingThree">
-                                            <h5 class="mb-0">
-                                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                                    <i class="flaticon-question"></i> Will you transfer my site?
-                                                </button>
-                                            </h5>
-                                        </div>
-                                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-                                            <div class="card-body">
-                                                Our set he for firmament morning sixth subdue darkness creeping gathered divide our
-                                                let god moving. Moving in fourth air night bring upon
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card">
-                                        <div class="card-header" id="heading_4">
-                                            <h5 class="mb-0">
-                                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse_4" aria-expanded="false" aria-controls="collapse_4">
-                                                    <i class="flaticon-question"></i> Why should I host with Hostza?
-                                                </button>
-                                            </h5>
-                                        </div>
-                                        <div id="collapse_4" class="collapse" aria-labelledby="heading_4" data-parent="#accordion">
-                                            <div class="card-body">
-                                                Our set he for firmament morning sixth subdue darkness creeping gathered divide our
-                                                let god moving. Moving in fourth air night bring upon
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card">
-                                        <div class="card-header" id="heading_5">
-                                            <h5 class="mb-0">
-                                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse_5" aria-expanded="false" aria-controls="collapse_5">
-                                                    <i class="flaticon-question"></i> How do I get started <span>with Shared
-                                                        Hosting?</span>
-                                                </button>
-                                            </h5>
-                                        </div>
-                                        <div id="collapse_5" class="collapse" aria-labelledby="heading_5" data-parent="#accordion">
-                                            <div class="card-body">
-                                                Our set he for firmament morning sixth subdue darkness creeping gathered divide our
-                                                let god moving. Moving in fourth air night bring upon
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> -->
+                                </div>
+                            @endforeach
+                        </div>
                     </div>
                     @else
                         <h3 class="pt-4">Join course to see more awesome content !</h3>

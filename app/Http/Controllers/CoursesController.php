@@ -6,9 +6,11 @@ use App\Course;
 use App\Subject;
 use App\User;
 use App\Votes;
+use App\Lesson;
 use Illuminate\Http\Request;
 use App\Http\Requests\Courses\CreateCoursesRequest;
 use App\Http\Requests\Courses\UpdateCoursesRequest;
+use App\Http\Requests\Courses\AddLessonsRequest;
 // use Illuminate\Support\Facades\Storage;
 
 class CoursesController extends Controller
@@ -129,6 +131,10 @@ class CoursesController extends Controller
      */
     public function destroy(Course $course)
     {
+        // if ($course->lesson->count() > 0) {
+        //     session()->flash('success', 'Course cannot be deleted because it has some lesson.');
+        //     return redirect(route('courses.index'));
+        // }
         unlink('storage/' . $course->image);
         unlink('storage/' . $course->video);
         $course->delete();
@@ -140,5 +146,22 @@ class CoursesController extends Controller
     {
         $courses = Course::orderBy('created_at', 'desc')->simplePaginate(6);
         return view('courses.showAll')->with('courses', $courses);
+    }
+
+    public function addLesson(AddLessonsRequest $request)
+    {
+        if (auth()->user()->isStudent()) {
+            return redirect(route('home'));
+        }
+        Lesson::create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'course_id' => $request->course_id
+        ]);
+
+        // flash message
+        session()->flash('success', 'Lesson created successfully.');
+        // redirect user
+        return redirect(route('courses.index'));
     }
 }
