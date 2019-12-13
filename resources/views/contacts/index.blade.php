@@ -19,13 +19,19 @@
                                 <div class="panel-body">
                                     <div class="table-responsive">
                                         <table class="table table-hover table-mailbox">
+                                            <thead>
+                                                <th>Name</th>
+                                                <th>Content</th>
+                                                <th>Email</th>
+                                                <th>Created At</th>
+                                            </thead>
                                             <tbody>
                                                 @foreach ($contacts as $contact)
                                                     <tr>
                                                         <td style="white-space: nowrap">{{ $contact->name }}</td>
                                                         <td style="white-space: nowrap">{{ $contact->content }}</td>
                                                         <td style="white-space: nowrap">{{ $contact->email }}</td>
-                                                        <td style="white-space: nowrap">{{$contact->created_at}}</td>
+                                                        <td style="white-space: nowrap">{{$contact->created_at->diffForHumans()}}</td>
                                                     </tr>
                                                 @endforeach
                                             </tbody>
