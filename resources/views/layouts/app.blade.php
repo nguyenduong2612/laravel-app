@@ -234,11 +234,11 @@
                                 Resources
                                 </h3>
                                 <ul>
-                                    <li><a href="javascript:;">Free Adobe XD</a></li>
-                                    <li><a href="javascript:;">Tutorials</a></li>
-                                    <li><a href="javascript:;">About</a></li>
-                                    <li><a href="javascript:;"> About</a></li>
-                                    <li><a href="javascript:;"> Contact</a></li>
+                                    <li><a href="{{ url('/all-courses') }}">Courses</a></li>
+                                    <li><a href="{{ url('/all-subjects') }}">Categories</a></li>
+                                    <li><a href="{{ url('/community') }}">Community</a></li>
+                                    <li><a href="{{ url('/about') }}">About</a></li>
+                                    <li><a href="{{ url('/contact') }}">Contact</a></li>
                                 </ul>
                             </div>
                         </div>

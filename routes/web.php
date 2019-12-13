@@ -20,9 +20,9 @@ Route::get('/', function () {
 Route::get('/about', function () {
     return view('about');
 });
-Route::get('/contact', function () {
-    return view('contact');
-});
+// Route::get('/contact', function () {
+//     return view('contact');
+// });
 Route::any ( '/search', function () {
     $q = Input::get ( 'q' );
     $course = Course::where ( 'title', 'LIKE', '%' . $q . '%' )->get();
@@ -38,13 +38,15 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/all-subjects', 'SubjectsController@showAll')->name('all-subjects');
 Route::get('/all-courses', 'CoursesController@showAll')->name('all-courses');
 Route::get('/community', 'PostsController@index')->name('community');
+Route::get('/contact', 'ContactsController@index')->name('contact');
 
 Route::resources([
     'subjects' => 'SubjectsController',
     'courses' => 'CoursesController',
     'users' => 'UsersController',
     'enrollments' => 'EnrollmentsController',
-    'posts' => 'PostsController'
+    'posts' => 'PostsController',
+    'contacts' => 'ContactsController'
 ]);
 
 Route::middleware(['auth', 'admin'])->group(function () {
