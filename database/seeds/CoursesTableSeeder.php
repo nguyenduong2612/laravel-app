@@ -23,8 +23,7 @@ class CoursesTableSeeder extends Seeder
                 'image' => $faker->image('public/storage/',400,300, 'abstract', false),
                 'video' => $faker->image('public/storage/',400,300, 'abstract', false),
                 'subject_id' => rand(1,7),
-                'teacher_id' => 1,
-                'vote' => 1
+                'teacher_id' => 1
             ]);
         }
     }

@@ -1,4 +1,3 @@
-@import url("//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css");
 .checked {
 	color: orange;
 }
@@ -27,10 +26,6 @@
     padding-bottom: 15px;
     border-bottom:1px solid rgba(0,0,0,.09) ;
 }
-
-
-
-
 
 .rate {
   display: inline-block;

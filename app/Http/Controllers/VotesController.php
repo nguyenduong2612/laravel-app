@@ -45,7 +45,7 @@ class VotesController extends Controller
         ]);
         
         // redirect back
-        return redirect(route('home'));
+        return redirect()->back();
     }
 
     /**

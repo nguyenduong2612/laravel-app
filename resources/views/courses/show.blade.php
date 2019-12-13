@@ -17,7 +17,11 @@
                                 <i class="flaticon-mark-as-favorite-star"></i>
                                 <i class="flaticon-mark-as-favorite-star"></i>
                                 <i class="flaticon-mark-as-favorite-star"></i>
-                                <span>{{ \App\Course::where(['id' => $course->id])->first()->vote }}</span>
+                                @if ( \App\Votes::where(['course_id' => $course->id]) )
+                                    <span>{{ \App\Votes::where(['course_id' => $course->id])->avg('star') }}</span>
+                                @else
+                                    <span>0.0</span>
+                                @endif
                             </div>
                             <div class="hours">
                                 <div class="video">
@@ -229,28 +233,27 @@
                         @auth
                         @if( \App\Http\Controllers\EnrollmentsController::checkEnroll(Auth::user()->id, $course->id) )
                         <div class="feedback_info">
-                            <h3>Write your feedback</h3>
+                            <h2>Write your feedback</h2>
                             <p>Your rating</p>
                             
                             
-                            <form action="{{ route('votes.store') }}" method = "post">
-                            
+                            <form action="{{ route('votes.store') }}" enctype="multipart/form-data" method = "POST">
+                                @csrf
 		                        <fieldset class='rate'>
-                                <input id='rate1-star5' type='radio' name='star' value='5' />
-                                <label for='rate1-star5' title='Excellent'>5</label>
-                                <input id='rate1-star4' type='radio' name='star' value='4' />
-                                <label for='rate1-star4' title='Good'>4</label>
-                                <input id='rate1-star3' type='radio' name='star' value='3' />
-                                <label for='rate1-star3' title='Satisfactory'>3</label>
-                                <input id='rate1-star2' type='radio' name='star' value='2' />
-                                <label for='rate1-star2' title='Bad'>2</label>
-                                <input id='rate1-star1' type='radio' name='star' value='1' />
-                                <label for='rate1-star1' title='Very bad'>1</label>
-                                
+                                    <input id='rate1-star5' type='radio' name='star' value='5' />
+                                    <label for='rate1-star5' title='Excellent'>5</label>
+                                    <input id='rate1-star4' type='radio' name='star' value='4' />
+                                    <label for='rate1-star4' title='Good'>4</label>
+                                    <input id='rate1-star3' type='radio' name='star' value='3' />
+                                    <label for='rate1-star3' title='Satisfactory'>3</label>
+                                    <input id='rate1-star2' type='radio' name='star' value='2' />
+                                    <label for='rate1-star2' title='Bad'>2</label>
+                                    <input id='rate1-star1' type='radio' name='star' value='1' />
+                                    <label for='rate1-star1' title='Very bad'>1</label>
                                 </fieldset>
                                 <input type="hidden" class="form-control" name="student_id" id="student_id" value="{{ Auth::user()->id }}">
                                 <input type="hidden" class="form-control" name="course_id" id="course_id" value="{{ $course->id}}">
-	  	                        <input type="submit" class="btn btn-primary" style="margin-top: 25px" value="Submit">
+	  	                        <input type="submit" class="btn btn-primary d-block" value="Submit">
 
 	  	<!-- <button type="button" class="btn btn-primary" onclick="window.location.href='?thamso=register'">Đăng ký</button> -->
 	                            </form>
