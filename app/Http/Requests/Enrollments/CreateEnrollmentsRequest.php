@@ -23,7 +23,8 @@ class CreateEnrollmentsRequest extends FormRequest
     {
         return [
             'student_id' => 'required',
-            'course_id' => 'required'
+            'course_id'=> 'required',
+            'course_cost' => 'required'
         ];
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Enrollment;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\Enrollments\CreateEnrollmentsRequest;
 
@@ -40,7 +41,9 @@ class EnrollmentsController extends Controller
             'student_id' => $request->student_id,
             'course_id' => $request->course_id
         ]);
-
+        $current_wallet = User::where('id',$request->student_id)->first()->wallet;
+        $current_wallet = $current_wallet - $request->course_cost;
+        User::where('id',$request->student_id)->update(['wallet' => $current_wallet]);
         // session()->flash('success', 'Enrollment created successfully.');
         return redirect()->back();
     }
