@@ -115,6 +115,39 @@
                     <td>
                         <button class="btn btn-danger btn-sm" onclick="handleDelete({{ $course->id }})">Delete</button>
                     </td>
+                    <td>
+                        <button class="btn btn-info btn-sm" onclick="showModel({{ $course->id }})">Add Lesson</button>
+                    </td>
+                    <div class="modal fade" id="{{$course->id}}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <form action="{{ route('courses.add-lesson') }}" method="POST" id="{{$course->id}}">
+                                @csrf
+                                <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="deleteModalLabel">Add Lesson</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <label for="title">Title</label>
+                                        <input type="text" id="title" class="form-control" name="title">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="description">Description</label>
+                                        <input type="text" id="description" class="form-control" name="description" >
+                                    </div>
+                                    <input type="hidden" class="form-control" name="course_id" id="course_id" value="{{ $course->id }}">
+                                    
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No, Go back</button>
+                                    <button type="submit" class="btn btn-success">Add Lesson</button>
+                                </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </tr>
                 @endif
             @endforeach
