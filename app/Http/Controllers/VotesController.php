@@ -98,4 +98,14 @@ class VotesController extends Controller
     {
         //
     }
+
+    public static function checkVote($current_id, $course_id)
+    {   
+        $votes = Votes::all();
+        foreach($votes as $vote) {
+            if(($vote->student_id == $current_id) && ($vote->course_id == $course_id))
+                return $vote->star;
+        }
+        return 0;
+    }
 }
