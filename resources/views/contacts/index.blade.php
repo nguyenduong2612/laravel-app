@@ -12,33 +12,33 @@
             <div class="container">
             @auth
                 @if(auth()->user()->isAdmin())
+                <h3>User's feedback list.</h3>
                 <div class="comments-area">
-                    <div class="comment-list">
-                    <h3>User's feedback list.</h3>
-                    @foreach ($contacts as $contact)
-                        <div class="single-comment justify-content-between d-flex mt-4">
-                            <div class="user justify-content-between d-flex">
-                            <div class="thumb">
-                                <img src="img/comment/comment_1.png" alt="">
-                            </div>
-                            <div class="desc">
-                                <p class="comment">
-                                    {{ $contact->content }}
-                                </p>
-                                <div class="d-flex justify-content-between">
-                                    <div class="d-flex align-items-center">
-                                        <h5>
-                                        <a href="javascript:;"> {{ $contact->name }}</a>
-                                        </h5>
-                                        <p class="date">{{$contact->created_at}} </p>
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="hpanel mg-b-15">
+                                <div class="panel-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover table-mailbox">
+                                            <tbody>
+                                                @foreach ($contacts as $contact)
+                                                    <tr>
+                                                        <td style="white-space: nowrap">{{ $contact->name }}</td>
+                                                        <td style="white-space: nowrap">{{ $contact->content }}</td>
+                                                        <td style="white-space: nowrap">{{ $contact->email }}</td>
+                                                        <td style="white-space: nowrap">{{$contact->created_at}}</td>
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                             </div>
-                            </div>
                         </div>
-                    @endforeach
                     </div>
                 </div>
+
+                
+
                 @else
                     <div class="row">
                         <div class="col-12">
