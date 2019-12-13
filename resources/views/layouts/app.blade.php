@@ -81,7 +81,14 @@
                                         </a> -->
                                         <li class="nav-item dropdown">
                                             <a id="navbarDropdown" class="nav-link dropdown-toggle login popup-with-form" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                            <span>Hello, {{ Auth::user()->name }}</span>
+                                            <span>
+                                                @if( Auth::user()->avatar == NULL)
+                                                    <img class="mr-2" style="border-radius: 50%" src="{{asset('img/blog/default-avatar.png')}}" alt="" width=30 height=30>
+                                                @else
+                                                <img class="mr-2" style="border-radius: 50%" src="{{ asset('storage/'.Auth::user()->avatar) }}" alt="" width=30 height=30>
+                                                @endif
+                                                {{ Auth::user()->name }}
+                                            </span>
                                             </a>
 
                                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
