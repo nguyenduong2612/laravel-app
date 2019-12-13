@@ -27,6 +27,7 @@ class CreateCoursesRequest extends FormRequest
             'description' => 'required',
             'image' => 'required',
             'video' => 'required',
+            'cost' => 'required',
             'subject' => 'required',
             'teacher' => 'required'
         ];

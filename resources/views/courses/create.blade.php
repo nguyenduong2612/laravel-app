@@ -58,7 +58,10 @@
                 <label for="image">Video</label>
                 <input type="file" class="form-control" name="video" id='video'>
             </div>
-
+            <div class="form-group">
+                <label for="cost">Cost</label>
+                <input type="number" class="form-control" name="cost" id='cost' value="{{ isset($course) ? $course->cost: '' }}">
+            </div>
             <div class="form-group">
                 <label for="subject">Subject</label>
                 <select name="subject" id="subject" class="form-control">

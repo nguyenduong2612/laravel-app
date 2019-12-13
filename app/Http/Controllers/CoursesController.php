@@ -53,6 +53,7 @@ class CoursesController extends Controller
             'description' => $request->description,
             'image' => $image,
             'video' => $video,
+            'cost' => $request->cost,
             'subject_id' => $request->subject,
             'teacher_id' => $request->teacher
         ]);
@@ -96,7 +97,7 @@ class CoursesController extends Controller
      */
     public function update(UpdateCoursesRequest $request, Course $course)
     {
-        $data = $request->only(['title', 'description', 'published_at', 'subject_id']);
+        $data = $request->only(['title', 'description', 'cost', 'published_at', 'subject_id']);
         // check if new image
         if ($request->hasFile('image')) {
             // delete old one
