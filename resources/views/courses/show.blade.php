@@ -231,16 +231,29 @@
                         <div class="feedback_info">
                             <h3>Write your feedback</h3>
                             <p>Your rating</p>
-                            <i class="flaticon-mark-as-favorite-star"></i>
-                            <i class="flaticon-mark-as-favorite-star"></i>
-                            <i class="flaticon-mark-as-favorite-star"></i>
-                            <i class="flaticon-mark-as-favorite-star"></i>
-                            <i class="flaticon-mark-as-favorite-star"></i>
                             
-                            <form action="#">
-                                <textarea name="" id="" cols="30" rows="10" placeholder="Write your feedback"></textarea>
-                                <button type="submit" class="boxed_btn">Submit</button>
-                            </form>
+                            
+                            <form action="{{ route('votes.store') }}" method = "post">
+                            
+		                        <fieldset class='rate'>
+                                <input id='rate1-star5' type='radio' name='star' value='5' />
+                                <label for='rate1-star5' title='Excellent'>5</label>
+                                <input id='rate1-star4' type='radio' name='star' value='4' />
+                                <label for='rate1-star4' title='Good'>4</label>
+                                <input id='rate1-star3' type='radio' name='star' value='3' />
+                                <label for='rate1-star3' title='Satisfactory'>3</label>
+                                <input id='rate1-star2' type='radio' name='star' value='2' />
+                                <label for='rate1-star2' title='Bad'>2</label>
+                                <input id='rate1-star1' type='radio' name='star' value='1' />
+                                <label for='rate1-star1' title='Very bad'>1</label>
+                                
+                                </fieldset>
+                                <input type="hidden" class="form-control" name="student_id" id="student_id" value="{{ Auth::user()->id }}">
+                                <input type="hidden" class="form-control" name="course_id" id="course_id" value="{{ $course->id}}">
+	  	                        <input type="submit" class="btn btn-primary" style="margin-top: 25px" value="Submit">
+
+	  	<!-- <button type="button" class="btn btn-primary" onclick="window.location.href='?thamso=register'">Đăng ký</button> -->
+	                            </form>
                         </div>
                         @endif
                         @endauth

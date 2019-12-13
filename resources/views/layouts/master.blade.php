@@ -19,6 +19,7 @@
     <script src="{{ asset('js/bootstrap.min.js')}}"></script>
     <script src="{{ asset('js/jquery.scrollUp.min.js')}}"></script>
     <script src="{{ asset('js/main.js')}}"></script>
+    <!-- <script src="{{ asset('js/vote.js')}}"></script> -->
     <!-- <script src="js/owl.carousel.min.js"></script>
     <script src="js/isotope.pkgd.min.js"></script>
     <script src="js/ajax-form.js"></script>
@@ -40,6 +41,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/vote.css') }}" rel="stylesheet">
 
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">

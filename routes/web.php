@@ -46,7 +46,8 @@ Route::resources([
     'users' => 'UsersController',
     'enrollments' => 'EnrollmentsController',
     'posts' => 'PostsController',
-    'contacts' => 'ContactsController'
+    'contacts' => 'ContactsController',
+    'votes' => 'VotesController'
 ]);
 
 Route::middleware(['auth', 'admin'])->group(function () {
