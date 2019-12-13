@@ -159,6 +159,15 @@
                                         <li>
                                             <a href="{{ route('lessons.index') }}"><i class="ti-book mr-3"></i>Lessons</a>
                                         </li>
+
+                                        @if(auth()->user()->isStudent())
+                                        <li>
+                                            <a>Wallet : ${{ Auth::user()->wallet}}</a>
+                                            <h5></h2>
+                                        </li>
+                                        @endif
+
+
                                     </ul>
                                 </nav>
 
