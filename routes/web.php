@@ -49,7 +49,8 @@ Route::resources([
     'enrollments' => 'EnrollmentsController',
     'posts' => 'PostsController',
     'contacts' => 'ContactsController',
-    'votes' => 'VotesController'
+    'votes' => 'VotesController',
+    'wallets' => 'WalletController'
 ]);
 
 Route::middleware(['auth', 'admin'])->group(function () {
