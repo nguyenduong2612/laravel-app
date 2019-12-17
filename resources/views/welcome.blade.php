@@ -92,165 +92,42 @@
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                             <div class="row">
-                                    <div class="col-xl-4 col-lg-4 col-md-6">
-                                        <div class="single_courses">
-                                            <div class="thumb">
-                                                <a href="#">
-                                                    <img src="img/courses/1.png" alt="">
-                                                </a>
-                                            </div>
-                                            <div class="courses_info">
-                                                <span>Photoshop</span>
-                                                <h3><a href="#">Mobile App design step by step <br>
-                                                        from beginner</a></h3>
-                                                <div class="star_prise d-flex justify-content-between">
-                                                    <div class="star">
-                                                        <i class="flaticon-mark-as-favorite-star"></i>
-                                                        <span>(4.5)</span>
-                                                    </div>
-                                                    <div class="prise">
-                                                        <span class="offer">$89.00</span>
-                                                        <span class="active_prise">
-                                                            $49
-                                                        </span>
-                                                    </div>
+                            @for($i = 1; $i < 7; $i++)
+                                <div class="col-xl-4 col-lg-4 col-md-6">
+                                    <div class="single_courses">
+                                        <div class="thumb">
+                                            <a href="{{ url('/courses/'.$i) }}">
+                                                <img src="{{ asset('storage/'.\App\Course::where(['id' => $i])->first()->image) }}"  width="340px" height="191px">
+                                            </a>
+                                        </div>
+                                        <div class="courses_info">
+                                            <span>{{ \App\Course::where(['id' => $i])->first()->subject->name }}</span>
+                                            <h3><a href="{{ url('/courses/'.$i) }}">{{ \App\Course::where(['id' => $i])->first()->title }}</a></h3>
+                                            <div class="star_prise d-flex justify-content-between">
+                                                <div class="star">
+                                                    <i class="flaticon-mark-as-favorite-star"></i>
+                                                    @php
+                                                        $star = \App\Votes::where(['course_id' => $i])->avg('star') ;
+                                                        $starFloat=round($star,1);
+                                                    @endphp
+                                                    <span>{{$starFloat }}</span>
+                                                </div>
+                                                <div class="prise">
+                                                    <span class="active_prise">
+                                                        ${{ \App\Course::where(['id' => $i])->first()->cost }}
+                                                    </span>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-4 col-lg-4 col-md-6">
-                                        <div class="single_courses">
-                                            <div class="thumb">
-                                                <a href="#">
-                                                    <img src="img/courses/2.png" alt="">
-                                                </a>
-                                            </div>
-                                            <div class="courses_info">
-                                                <span>Adobe XD</span>
-                                                <h3><a href="#">UI/UX design with Adobe XD with Anderson</a></h3>
-                                                <div class="star_prise d-flex justify-content-between">
-                                                    <div class="star">
-                                                        <i class="flaticon-mark-as-favorite-star"></i>
-                                                        <span>(4.5)</span>
-                                                    </div>
-                                                    <div class="prise">
-                                                        <span class="offer">$89.00</span>
-                                                        <span class="active_prise">
-                                                            $49
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-4 col-lg-4 col-md-6">
-                                        <div class="single_courses">
-                                            <div class="thumb">
-                                                <a href="#">
-                                                    <img src="img/courses/3.png" alt="">
-                                                </a>
-                                            </div>
-                                            <div class="courses_info">
-                                                <span>Wordpress</span>
-                                                <h3><a href="#">Wordpress theme development <br>
-                                                        from scratch</a></h3>
-                                                <div class="star_prise d-flex justify-content-between">
-                                                    <div class="star">
-                                                        <i class="flaticon-mark-as-favorite-star"></i>
-                                                        <span>(4.5)</span>
-                                                    </div>
-                                                    <div class="prise">
-                                                        <span class="offer">$89.00</span>
-                                                        <span class="active_prise">
-                                                            $49
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-4 col-lg-4 col-md-6">
-                                        <div class="single_courses">
-                                            <div class="thumb">
-                                                <a href="#">
-                                                    <img src="img/courses/4.png" alt="">
-                                                </a>
-                                            </div>
-                                            <div class="courses_info">
-                                                <span>Photoshop</span>
-                                                <h3><a href="#">Mobile App design step by step <br>
-                                                        from beginner</a></h3>
-                                                <div class="star_prise d-flex justify-content-between">
-                                                    <div class="star">
-                                                        <i class="flaticon-mark-as-favorite-star"></i>
-                                                        <span>(4.5)</span>
-                                                    </div>
-                                                    <div class="prise">
-                                                        <span class="offer">$89.00</span>
-                                                        <span class="active_prise">
-                                                            $49
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-4 col-lg-4 col-md-6">
-                                        <div class="single_courses">
-                                            <div class="thumb">
-                                                <img src="img/courses/5.png" alt="">
-                                            </div>
-                                            <div class="courses_info">
-                                                <span>UI/UX</span>
-                                                <h3><a href="#">How to complete user research <br>
-                                                        and make work flow</a></h3>
-                                                <div class="star_prise d-flex justify-content-between">
-                                                    <div class="star">
-                                                        <i class="flaticon-mark-as-favorite-star"></i>
-                                                        <span>(4.5)</span>
-                                                    </div>
-                                                    <div class="prise">
-                                                        <span class="offer">$89.00</span>
-                                                        <span class="active_prise">
-                                                            $49
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-4 col-lg-4 col-md-6">
-                                        <div class="single_courses">
-                                            <div class="thumb">
-                                                <a href="#">
-                                                    <img src="img/courses/6.png" alt="">
-                                                </a>
-                                            </div>
-                                            <div class="courses_info">
-                                                <span>Wordpress</span>
-                                                <h3><a href="#">Commitment to dedicated <br>
-                                                        Support</a></h3>
-                                                <div class="star_prise d-flex justify-content-between">
-                                                    <div class="star">
-                                                        <i class="flaticon-mark-as-favorite-star"></i>
-                                                        <span>(4.5)</span>
-                                                    </div>
-                                                    <div class="prise">
-                                                        <span class="offer">$89.00</span>
-                                                        <span class="active_prise">
-                                                            $49
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-12">
-                                        <div class="more_courses text-center">
-                                            <a href="#" class="boxed_btn_rev">More Courses</a>
                                         </div>
                                     </div>
                                 </div>
+                            @endfor
+                            </div>
+                            <div class="col-xl-12 text-center">
+                                <div class="more_courses text-center">
+                                    <a href="{{ url('/all-courses') }}" class="boxed_btn_rev">More Courses</a>
+                                </div>  
+                            </div>
                     </div>
                 </div>
             </div>
