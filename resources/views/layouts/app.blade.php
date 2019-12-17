@@ -162,7 +162,7 @@
 
                                         @if(auth()->user()->isStudent())
                                         <li>
-                                            <a>Wallet : ${{ Auth::user()->wallet}}</a>
+                                            <a href="{{ route('wallets.index') }}"><i class="ti-book mr-3"></i>Wallet : ${{ Auth::user()->wallet}}</a>
                                             <h5></h2>
                                         </li>
                                         @endif
