@@ -105,6 +105,7 @@
                         <h3>Video</h3>
                         <p><img src="{{ asset('storage/'.$course->video) }}" alt="" style="width: 90%"></p>      
                     </div>
+                    @endif
                     <div class="single_courses outline_courses_info mt-5">
                         <h3 >Lesson</h3>
                         <div id="accordion">
@@ -117,22 +118,26 @@
                                             </button>
                                         </h5>
                                     </div>
-                                    <div id="{{$lesson->id}}" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-                                        <div class="card-body">
-                                        {{$lesson->description}}
+                                    @if( \App\Http\Controllers\EnrollmentsController::checkEnroll(Auth::user()->id, $course->id) )
+                                        <div id="{{$lesson->id}}" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                            <div class="card-body">
+                                            {{$lesson->description}}
+                                            </div>
                                         </div>
-                                    </div>
+                                    @endif
                                 </div>
                             @endforeach
                         </div>
 
                     </div>
+                    @if( \App\Http\Controllers\EnrollmentsController::checkEnroll(Auth::user()->id, $course->id) )
+                        <h3 class="pt-4"></h3>
                     @else
-                        <h3 class="pt-4">Join course to see more awesome content !</h3>
+                        <h3 class="pt-4">Enroll this course to see more awesome content !</h3>
                     @endif
                     @endauth
                     @guest
-                    <h3 class="pt-4">Please log in to join this course !</h3>
+                    <h3 class="pt-4">Please log in to see this course !</h3>
                     @endguest
                 </div>
                 <div class="col-xl-5 col-lg-5">
