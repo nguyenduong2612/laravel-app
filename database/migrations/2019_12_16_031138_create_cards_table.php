@@ -17,7 +17,7 @@ class CreateCardsTable extends Migration
             $table->increments('id');
             $table->string('seri_number');
             $table->integer('value');
-            $table->integer('status');
+            $table->integer('status')->default('1');;
             $table->timestamps();
         });
     }

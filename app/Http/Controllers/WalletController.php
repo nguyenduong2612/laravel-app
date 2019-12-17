@@ -86,6 +86,7 @@ class WalletController extends Controller
                 if (($request->yourSelf) == 1) {
                     $user = User::find($id);
                     $user->wallet = $user->wallet + $card_value;
+                    $card = Card::where('seri_number', $request->seriNumber)->update(['status' => 0]);
                     $user->save();
                     session()->flash('success', 'Charged successfully.');
                     return redirect(route('wallets.index'));
@@ -99,12 +100,12 @@ class WalletController extends Controller
                     } else {
                         $friend_user = User::where('email', $request->friendEmail)->first();
                         $friend_user->wallet = $friend_user->wallet + $card_value;
+                        $card = Card::where('seri_number', $request->seriNumber)->update(['status' => 0]);
                         $friend_user->save();
                         session()->flash('success', 'Charged successfully.');
                         return redirect(route('wallets.index'));
                     }
                 }
-                $card = Card::where('seri_number', $request->seriNumber)->update(['status' => 0]);
             }
         }
     }
