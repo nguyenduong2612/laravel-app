@@ -165,6 +165,11 @@
                                             <a href="{{ route('wallets.index') }}"><i class="ti-book mr-3"></i>Wallet : ${{ Auth::user()->wallet}}</a>
                                             <h5></h2>
                                         </li>
+                                        @elseif (auth()->user()->isTeacher())
+                                        <li>
+                                            <a href="{{ route('feedbacks.index') }}"><i class="ti-book mr-3"></i>Feedback</a>
+                                            <h5></h2>
+                                        </li>
                                         @endif
 
 

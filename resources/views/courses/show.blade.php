@@ -216,6 +216,7 @@
                                         @break
                                     @endif
                                 @endfor
+                                <textarea name="feedBack" id="feedBack" cols="30" rows="10" placeholder="Write your feedback"></textarea>
                                 <input type="hidden" class="form-control" name="student_id" id="student_id" value="{{ Auth::user()->id }}">
                                 <input type="hidden" class="form-control" name="course_id" id="course_id" value="{{ $course->id}}">
 	  	                        <input type="submit" class="btn btn-primary d-block" value="Submit">
