@@ -131,10 +131,10 @@ class CoursesController extends Controller
      */
     public function destroy(Course $course)
     {
-        // if ($course->lesson->count() > 0) {
-        //     session()->flash('success', 'Course cannot be deleted because it has some lesson.');
-        //     return redirect(route('courses.index'));
-        // }
+        if ($course->lessons->count() > 0) {
+            session()->flash('success', 'Course cannot be deleted because it has some lesson.');
+            return redirect(route('courses.index'));
+        }
         unlink('storage/' . $course->image);
         unlink('storage/' . $course->video);
         $course->delete();
