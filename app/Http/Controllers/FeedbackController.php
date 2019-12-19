@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use App\Http\Requests\Votes\CreateVotesRequest;
-use App\Votes;
+use App\Feedback;
 
-class VotesController extends Controller
+use Illuminate\Http\Request;
+
+class FeedbackController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +15,8 @@ class VotesController extends Controller
      */
     public function index()
     {
-        $votes = Votes::orderBy('created_at', 'desc')->get();
-        return view('votes.index')->with('votes', $votes);
+        $feedback = Feedback::orderBy('created_at', 'desc')->paginate(8);
+        return view('feedbacks.index')->with('feedbacks',$feedback);
     }
 
     /**
@@ -36,24 +35,9 @@ class VotesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateVotesRequest $request)
+    public function store(Request $request)
     {
-        // Votes::create([
-        //     'star' => $request->star,
-        //     'student_id' => $request->student_id,
-        //     'course_id' => $request->course_id
-
-        // ]);
-        DB::table('votes')
-            ->updateOrInsert(
-                ['student_id' => $request->student_id, 'course_id' => $request->course_id],
-                ['star' => $request->star]
-            );
-            DB::table('feedback')->insert(
-                ['student_id' => $request->student_id, 'course_id' => $request->course_id, 'feedback' => $request->feedBack, 'star' => $request->star],
-            );
-        // redirect back
-        return redirect()->back();
+        //
     }
 
     /**
@@ -99,15 +83,5 @@ class VotesController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public static function checkVote($current_id, $course_id)
-    {
-        $votes = Votes::all();
-        foreach ($votes as $vote) {
-            if (($vote->student_id == $current_id) && ($vote->course_id == $course_id))
-                return $vote->star;
-        }
-        return 0;
     }
 }

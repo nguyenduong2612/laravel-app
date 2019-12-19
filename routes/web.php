@@ -50,7 +50,9 @@ Route::resources([
     'posts' => 'PostsController',
     'contacts' => 'ContactsController',
     'votes' => 'VotesController',
-    'wallets' => 'WalletController'
+    'wallets' => 'WalletController',
+    'feedbacks' => 'FeedbackController'
+    
 ]);
 
 Route::middleware(['auth', 'admin'])->group(function () {
